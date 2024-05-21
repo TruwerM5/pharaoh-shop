@@ -1,0 +1,6 @@
+const AddToCartBtnVue_vue_vue_type_style_index_0_scoped_7ecd532d_lang = ".add-to-cart-btn[data-v-7ecd532d]{background-color:#000;border:none;border-radius:5px;gap:7px;overflow:hidden;padding-block:10px;position:relative;transition:background-color .5s ease-in-out;width:100%}.add-to-cart-btn.clicked[data-v-7ecd532d]{background-color:#03fc56}.add-to-cart-btn__inner[data-v-7ecd532d]{align-items:center;display:flex;justify-content:center;position:relative;transition:transform .5s ease-in-out}.add-to-cart-btn__inner.clicked[data-v-7ecd532d]{transform:translateY(-60px)}.add-to-cart-btn__icon[data-v-7ecd532d]{width:35px}.add-to-cart-btn__text[data-v-7ecd532d]{color:#fff;font-size:20px}.add-to-cart-btn__block[data-v-7ecd532d]{display:flex;height:-moz-fit-content;height:fit-content;position:relative}.add-to-cart-btn__check[data-v-7ecd532d]{bottom:50%;left:50%;position:absolute;transform:translateY(-60px);transition:transform .5s ease-in-out}.add-to-cart-btn__check.clicked[data-v-7ecd532d]{transform:translateY(50%)}.add-to-cart-btn__check-icon[data-v-7ecd532d]{width:20px}";
+
+const AddToCartBtnVueStyles_1CivNrY9 = [AddToCartBtnVue_vue_vue_type_style_index_0_scoped_7ecd532d_lang];
+
+export { AddToCartBtnVueStyles_1CivNrY9 as default };
+//# sourceMappingURL=AddToCartBtnVue-styles.1CivNrY9.mjs.map
