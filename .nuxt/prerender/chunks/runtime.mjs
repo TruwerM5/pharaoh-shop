@@ -57,7 +57,7 @@ function _expandFromEnv(value) {
 
 const inlineAppConfig = {
   "nuxt": {
-    "buildId": "39432ec7-8f5c-433f-a995-9219c2a5aca9"
+    "buildId": "377c052b-a8d1-413b-8aff-48167d725e52"
   }
 };
 
@@ -67,7 +67,7 @@ const appConfig = defuFn(inlineAppConfig);
 
 const _inlineRuntimeConfig = {
   "app": {
-    "baseURL": "/pharaoh-shop/",
+    "baseURL": "/",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },

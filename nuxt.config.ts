@@ -1,12 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+export default defineNuxtConfig({ 
   app: {
     head: {
       htmlAttrs: {
         lang: 'ru'
-      }
+      },
     },
-    baseURL: '/pharaoh-shop/'
   },
   modules: ['@pinia/nuxt'],
   devtools: { enabled: false },  
@@ -18,6 +17,8 @@ export default defineNuxtConfig({
     }
   },
   router: {
-
+    options: {
+      
+    }
   }
 })
