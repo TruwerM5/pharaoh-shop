@@ -24,7 +24,6 @@ function moveCarousel(step: number) {
         }
         
     }
-    console.log(currentIndex.value);
 }
 
 
@@ -65,14 +64,13 @@ function moveCarousel(step: number) {
     overflow: hidden
     &__content
         position: relative
+        max-height: fit-content
         display: flex
         justify-content: flex-start
-        align-items: stretch
+        align-items: center
         transition: transform .2s ease-in-out
     &__item
         min-width: 100%
-    &__image
-        height: 100%
         object-fit: cover
     &__btn
         position: absolute
@@ -84,4 +82,7 @@ function moveCarousel(step: number) {
             right: -10px
     &__icon
         width: 25px
+    &__image
+        min-height: 100%
+        object-fit: cover
 </style>

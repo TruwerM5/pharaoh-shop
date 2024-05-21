@@ -5,11 +5,12 @@ import { useProductsStore } from '~/stores/products.store';
 import type { Product } from '~/types/product';
 const route = useRoute();
 const ProductsStore = useProductsStore();
-
 const data = ref<Product[]>([]);
+const translatedQuery = ref(ProductsStore.checkQueryString(route.query));
+
+console.log(translatedQuery);
 
 if(!route.query.category) {
-    console.log("No query");
     data.value = ProductsStore.products;
 } else {
     data.value = ProductsStore.products.filter(item => {
@@ -32,15 +33,31 @@ onBeforeRouteUpdate((to,from) => {
                 return item.category == to.query.category;
             } else return false;
         });
+        translatedQuery.value = ProductsStore.checkQueryString(to.query);
     }
 });
 
-console.log(data.value);
 
 </script>
 
 <template>
-    <div class="product-page page">
+    <div class="categories page">
+        <template v-if="data.length > 0">
+            <div class="categories__nav">
+                <h1 class="categories__title">{{ translatedQuery }}</h1>
+            </div>
+        </template>
         <ProductsList :products="data" />
     </div>
 </template>
+
+<style lang="sass" scoped>
+
+.categories
+    &__nav
+        margin-bottom: 30px
+    &__title
+        font-size: 30px
+        text-transform: capitalize
+
+</style>

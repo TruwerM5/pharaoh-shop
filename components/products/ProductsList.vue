@@ -31,9 +31,6 @@ const route = useRoute();
 .products-list
     &__inner
         display: grid
-        grid-template-columns: 1fr
-        padding-inline: 35px
+        grid-template-columns: 1fr 1fr
         gap: 20px
-        align-content: center
-        justify-content: center
 </style>

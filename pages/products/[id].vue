@@ -106,7 +106,14 @@ function addToCart() {
                 </div>
                 <AddToCartBtnVue @click="addToCart" class="mt-[20px]"/>
             </div>
-            
+            <div class="product-about px-[30px]">
+                <span class="product-about__title">О товаре</span>
+                <p class="product-about__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Odio ab reprehenderit dolores minus beatae, aperiam 
+                    voluptatem dicta in dolor, facilis et excepturi, 
+                    distinctio quas debitis soluta at exercitationem 
+                    labore quos.</p>
+            </div>
         </div>
     </div>
     
@@ -162,4 +169,11 @@ function addToCart() {
         &.selected
             color: #fff
             background-color: #000
+
+.product-about
+    margin-block: 35px
+    &__title
+        font-size: 26px
+    &__text
+        font-size: 16px
 </style>

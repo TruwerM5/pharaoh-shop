@@ -1,4 +1,5 @@
 
+import type { LocationQuery, LocationQueryValue } from "vue-router";
 import type { Product } from "~/types/product";
 
 export const useProductsStore = defineStore('ProductsStore', {
@@ -91,11 +92,27 @@ export const useProductsStore = defineStore('ProductsStore', {
                 price: 3800,
                 sizes: ['xs','s','m','l','xl']
             }
+        ],
+        translations: [
+            ['tshirts', 'футболки'],
+            ['jackets', 'куртки'],
+            ['sneakers', 'кеды'],
+            ['slates', 'сланцы'],
+            ['jeans', 'джинсы'],
         ]
     }),
     actions: {
         getById(id: number) {
             return this.products.find(item => item.id == id);
+        },
+        checkQueryString(query: LocationQuery) {
+            let instance: string | null = null;
+            this.translations.forEach(item => {
+                if(item[0] == query.category) {
+                    instance = item[1];
+                } 
+            });
+            return instance;
         }
     }
 })
