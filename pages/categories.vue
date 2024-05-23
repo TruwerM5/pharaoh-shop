@@ -8,8 +8,6 @@ const ProductsStore = useProductsStore();
 const data = ref<Product[]>([]);
 const translatedQuery = ref(ProductsStore.checkQueryString(route.query));
 
-console.log(translatedQuery);
-
 if(!route.query.category) {
     data.value = ProductsStore.products;
 } else {
@@ -44,7 +42,7 @@ onBeforeRouteUpdate((to,from) => {
     <div class="categories page">
         <template v-if="data.length > 0">
             <div class="categories__nav">
-                <h1 class="categories__title">{{ translatedQuery }}</h1>
+                <h1 class="categories__title page-title">{{ translatedQuery }}</h1>
             </div>
         </template>
         <ProductsList :products="data" />
@@ -56,8 +54,5 @@ onBeforeRouteUpdate((to,from) => {
 .categories
     &__nav
         margin-bottom: 30px
-    &__title
-        font-size: 30px
-        text-transform: capitalize
 
 </style>

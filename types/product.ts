@@ -9,3 +9,14 @@ export interface Product {
     price: number;
     sizes?: string[];
 }
+
+
+export interface CartProduct extends Omit<Product, 'sizes'|'category'> {
+    quantity: number;
+    size?: string;
+} 
+
+export interface RemoveCartProduct {
+    id: number;
+    size: string | undefined;
+}

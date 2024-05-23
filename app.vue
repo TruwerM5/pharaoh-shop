@@ -2,6 +2,15 @@
 
 import FooterVue from './components/FooterVue.vue';
 
+import { useCartStore } from './stores/cart.store';
+
+const CartStore = useCartStore();
+
+if(process.client) {
+  CartStore.initCartStorage();
+}
+
+
 </script>
 
 <template>
