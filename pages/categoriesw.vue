@@ -45,7 +45,13 @@ onBeforeRouteUpdate((to,from) => {
                 <h1 class="categories__title page-title">{{ translatedQuery }}</h1>
             </div>
         </template>
-        <ProductsList :products="data" />
+        <ScrollVue>
+            <template #content>
+                <ProductsList :products="data" />
+            </template>
+            
+        </ScrollVue>
+        
     </div>
 </template>
 

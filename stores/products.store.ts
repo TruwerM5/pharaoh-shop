@@ -113,6 +113,13 @@ export const useProductsStore = defineStore('ProductsStore', {
                 } 
             });
             return instance;
+        },
+        getCategoryTitle(category: string | string[]) {
+            return this.translations.find(item => {
+                if(item[0] == category) {
+                    return true;
+                }
+            });
         }
     }
 })

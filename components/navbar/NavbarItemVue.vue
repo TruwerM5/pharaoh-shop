@@ -32,7 +32,9 @@ function toggleSubMenu(id: number) {
             <li v-for="category in item.categories" :key="category.id"
             class="nav-item__nested-item">
                 <NuxtLink @click="NavStore.toggleNav"
-                :to="{path:'/categories',query: {category: category.category}}">
+                :to="{path:`/categories/${category.category}`,
+                // query: {category: category.category}
+                }">
                     {{ category.title }}
                 </NuxtLink>
             </li>

@@ -111,9 +111,8 @@ function onRemoveClick() {
         top: 5px
         right: 5px
         padding: 3px
-        border: 1px solid #000
     &__remove-icon
-        width: 10px
+        width: 12px
     &__btn
         width: 22px
         height: 22px

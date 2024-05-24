@@ -65,7 +65,7 @@ function addToCart() {
             </AlertVue>
         </div>
         <div v-else-if="product" class="product-details__inner">
-            <NuxtLink :to="{path: '/categories', query: {category: product.category}}"
+            <NuxtLink :to="{path: `/categories/${product.category}`,}"
             class="go-back-btn">
                 <img class="go-back-btn__icon"
                 src="/images/arrow-icon.svg" alt="Назад">
