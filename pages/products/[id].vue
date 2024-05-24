@@ -12,6 +12,7 @@ const route = useRoute();
 const errorMsg = ref('');
 const currentSizeIndex = ref<number>();
 
+
 function setSizeIndex(sizeIndex: number) {
     currentSizeIndex.value = sizeIndex;
 } 
@@ -46,8 +47,6 @@ function addToCart() {
         }
 
         CartStore.addToCart(product.value, size,  1);
-        console.log("Size: ", size);
-        console.log("Added product", product.value);
     }
     
 }
@@ -65,6 +64,8 @@ function addToCart() {
             </AlertVue>
         </div>
         <div v-else-if="product" class="product-details__inner">
+            <ProductImageBigVue
+            :images="product.images" />
             <NuxtLink :to="{path: `/categories/${product.category}`,}"
             class="go-back-btn">
                 <img class="go-back-btn__icon"

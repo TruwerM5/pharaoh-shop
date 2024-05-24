@@ -1,6 +1,10 @@
 <script setup lang="ts">
 
+import { useImagesStore } from '~/stores/images.store';
+
 const props = defineProps<{images: string[];}>();
+
+const ImagesStore = useImagesStore();
 
 const currentIndex = ref(0);
 
@@ -24,6 +28,8 @@ function moveCarousel(step: number) {
         }
         
     }
+
+    ImagesStore.setCurrentIndex(currentIndex.value);
 }
 
 
@@ -33,11 +39,12 @@ function moveCarousel(step: number) {
     <div class="images-wrapper">
         <div class="product-images">
             <div class="product-images__content"
-                :style="{transform: `translateX(${-currentIndex * 100}%)`}">
+                :style="{transform: `translateX(${-ImagesStore.currentIndex * 100}%)`}">
                 <div v-for="image,i in images" :key="i"
                 class="product-images__item">
                     <img class="product-images__image"
-                    :src="`/images/${image}`" :alt="`Product${i+1}`">
+                    :src="`/images/${image}`" :alt="`Product${i+1}`"
+                    @click="ImagesStore.openGallery">
                 </div>
             </div>    
         </div>
@@ -85,4 +92,5 @@ function moveCarousel(step: number) {
     &__image
         min-height: 100%
         object-fit: cover
+        cursor: pointer
 </style>
