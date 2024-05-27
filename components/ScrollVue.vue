@@ -8,15 +8,13 @@ const delta = ref(0);
 const router = useRouter();
 
 onMounted(() => {
-    document.addEventListener('scroll', (e:any) => {
-        if(container.value) {
-            delta.value = container.value.offsetTop - window.scrollY;
-        }
-        
-    });
-    if(delta.value < 200) {
+    if(container.value && container.value.getBoundingClientRect().top < 100) {
         isActive.value = true;
     }
+    // document.addEventListener('scroll', (e:any) => {
+        
+        
+    // });
 });
 
 onUnmounted(() => {
@@ -42,8 +40,7 @@ onUnmounted(() => {
 <style lang="sass" scoped>
 
 .scroll-enter-active
-    transition: all .4s ease-in-out
-    transition-delay: .4s
+    transition: all .8s ease-in-out
 
 .scroll-enter-from
     position: relative

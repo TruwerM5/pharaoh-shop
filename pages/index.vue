@@ -1,5 +1,14 @@
+<script setup lang="ts">
+
+import HeroVue from '~/components/home/HeroVue.vue';
+
+</script>
+
+
+
 <template>
-    <div>
-        <h1>Home page</h1>
+    <div class="home-page">
+        <HeroVue />        
+        <HomeBrandsVue />
     </div>
 </template>
