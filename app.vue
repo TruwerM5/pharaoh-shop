@@ -19,13 +19,21 @@ if(process.client) {
         <Title>PHARAOH SHOP</Title>
         <Link rel="icon" type="image/png" href="/images/3.png" />
       </Head>
-      <Body>
-        <HeaderVue />
-          <main class="main">
-              <NuxtPage :transition="{name:'page', mode: 'out-in'}" />
-          </main>
-        <FooterVue />
-      </Body>
+        <Body>
+          <!-- <ClientOnly> -->
+
+          
+          <HeaderVue />
+            <main class="main h-full">
+                <NuxtPage :transition="{name:'page', mode: 'out-in'}" />
+            </main>
+        
+            
+          <FooterVue />
+        <!-- </ClientOnly> -->
+        </Body>
+
+      
       
     </Html>
 </template>

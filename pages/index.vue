@@ -9,6 +9,6 @@ import HeroVue from '~/components/home/HeroVue.vue';
 <template>
     <div class="home-page">
         <HeroVue />        
-        <HomeBrandsVue />
+        <!-- <HomeBrandsVue /> -->
     </div>
 </template>

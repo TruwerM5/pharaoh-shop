@@ -2,6 +2,7 @@
 interface _GlobalComponents {
       'AddToCartBtnVue': typeof import("../components/AddToCartBtnVue.vue")['default']
     'AlertVue': typeof import("../components/AlertVue.vue")['default']
+    'CheckoutVue': typeof import("../components/CheckoutVue.vue")['default']
     'FooterVue': typeof import("../components/FooterVue.vue")['default']
     'HeaderVue': typeof import("../components/HeaderVue.vue")['default']
     'ModalWindowVue': typeof import("../components/ModalWindowVue.vue")['default']
@@ -42,6 +43,7 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
       'LazyAddToCartBtnVue': typeof import("../components/AddToCartBtnVue.vue")['default']
     'LazyAlertVue': typeof import("../components/AlertVue.vue")['default']
+    'LazyCheckoutVue': typeof import("../components/CheckoutVue.vue")['default']
     'LazyFooterVue': typeof import("../components/FooterVue.vue")['default']
     'LazyHeaderVue': typeof import("../components/HeaderVue.vue")['default']
     'LazyModalWindowVue': typeof import("../components/ModalWindowVue.vue")['default']
@@ -96,6 +98,7 @@ declare module 'vue' {
 
 export const AddToCartBtnVue: typeof import("../components/AddToCartBtnVue.vue")['default']
 export const AlertVue: typeof import("../components/AlertVue.vue")['default']
+export const CheckoutVue: typeof import("../components/CheckoutVue.vue")['default']
 export const FooterVue: typeof import("../components/FooterVue.vue")['default']
 export const HeaderVue: typeof import("../components/HeaderVue.vue")['default']
 export const ModalWindowVue: typeof import("../components/ModalWindowVue.vue")['default']
@@ -136,6 +139,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyAddToCartBtnVue: typeof import("../components/AddToCartBtnVue.vue")['default']
 export const LazyAlertVue: typeof import("../components/AlertVue.vue")['default']
+export const LazyCheckoutVue: typeof import("../components/CheckoutVue.vue")['default']
 export const LazyFooterVue: typeof import("../components/FooterVue.vue")['default']
 export const LazyHeaderVue: typeof import("../components/HeaderVue.vue")['default']
 export const LazyModalWindowVue: typeof import("../components/ModalWindowVue.vue")['default']

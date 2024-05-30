@@ -62,6 +62,9 @@ function onRemoveClick() {
                         <img src="/images/plus-icon.svg" alt="Добавить">
                     </button>
                 </div>
+                <span class="product__sum">
+                    {{ cartproduct.quantity }} &times; {{ cartproduct.price }} = {{ cartproduct.quantity * cartproduct.price }}
+                </span>
             </div>
             <button class="product__remove-btn">
                 <img 
@@ -122,7 +125,8 @@ function onRemoveClick() {
         border: 1px solid #000
         &_increment
             background-color: #000
-
+    &__sum
+        font-size: 14px
 .hide-product-enter-active,
 .hide-product-leave-active
     position: relative

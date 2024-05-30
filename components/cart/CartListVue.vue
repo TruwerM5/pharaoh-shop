@@ -14,11 +14,17 @@ const CartStore = useCartStore();
 
 <template>
     <div class="cart-list">
+        <!-- Cart elements -->
         <ul class="cart-list__content">
             <TransitionGroup name="hide">
                 <CartItemVue v-for="item in cartList" :key="item.id" :cartproduct="item" class="cart-list__item" />
             </TransitionGroup>
         </ul>
+        <!-- Total cart sum -->
+        <span class="cart-list__total-sum flex justify-between items-center mt-[10px] font-semibold">
+           Итого: <span class="ml-auto">{{ CartStore.getTotalSum }}р.</span>
+        </span>
+        <span class="cart-list__text block">Цена указана без учета доставки</span>
     </div>
 </template>
 
@@ -31,21 +37,11 @@ const CartStore = useCartStore();
         gap: 10px
     &__item
         transition: all .5s ease-in-out
-
-    
-// .hide-move,
-// .hide-leave-active
-//     transition: all .5s ease
-
-// .hide-leave-to
-//     opacity: 0
-//     transform: translateX(100%)
-
-// .hide-leave-active
-//     position: fixed
-//     left: 0
-//     top: auto
-//     bottom: auto
+    &__total-sum
+        font-size: 24px
+    &__text
+        font-size: 12px
+        color: #6e6b65
 .hide-move,
 .hide-leave-active,
 .hide-enter-active

@@ -564,7 +564,7 @@ const wrapInKeepAlive = (props, children) => {
 function toArray(value) {
   return Array.isArray(value) ? value : [value];
 }
-const appPageTransition = false;
+const appPageTransition = { "name": "page", "mode": "out-in" };
 const appKeepalive = false;
 const nuxtLinkDefaults = { "componentName": "NuxtLink" };
 const asyncDataDefaults = { "deep": true };
@@ -591,25 +591,23 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./cart-6VU1X8Zf.mjs').then((m) => m.default || m)
+    component: () => import('./cart-C79jhGzv.mjs').then((m) => m.default || m)
   },
   {
-    name: "categories",
-    path: "/categories",
+    name: "categories-category",
+    path: "/categories/:category()",
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./categories-BaXpgHoR.mjs').then((m) => m.default || m),
-    children: [
-      {
-        name: "categories-category",
-        path: ":category()",
-        meta: {},
-        alias: [],
-        redirect: void 0 ,
-        component: () => import('./_category_-0a0Wpd8M.mjs').then((m) => m.default || m)
-      }
-    ]
+    component: () => import('./_category_-oa-NEsr3.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "categoriesw",
+    path: "/categoriesw",
+    meta: {},
+    alias: [],
+    redirect: void 0 ,
+    component: () => import('./categoriesw-Dg0_mnM8.mjs').then((m) => m.default || m)
   },
   {
     name: "HomePage",
@@ -617,7 +615,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./HomePage-DmTln3Ek.mjs').then((m) => m.default || m)
+    component: () => import('./HomePage-Aj07JEto.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -625,7 +623,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./index-CNDTHjDu.mjs').then((m) => m.default || m)
+    component: () => import('./index-DKQO2MtL.mjs').then((m) => m.default || m)
   },
   {
     name: "products-id",
@@ -633,7 +631,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_id_-DyPxzOXR.mjs').then((m) => m.default || m)
+    component: () => import('./_id_-7KML4zjj.mjs').then((m) => m.default || m)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1442,7 +1440,7 @@ function definePayloadReducer(name, reduce) {
   }
 }
 const clientOnlySymbol = Symbol.for("nuxt:client-only");
-defineComponent({
+const __nuxt_component_5 = defineComponent({
   name: "ClientOnly",
   inheritAttrs: false,
   // eslint-disable-next-line vue/require-prop-types
@@ -2004,12 +2002,15 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const isSubMenuOpened = ref(false);
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0$1;
-      _push(`<li${ssrRenderAttrs(mergeProps({ class: "nav-item" }, _attrs))} data-v-1fbd9e88><span class="nav-item__title" data-v-1fbd9e88>${ssrInterpolate(__props.item.title)} <img class="${ssrRenderClass(["nav-item__icon", { "rotated": unref(isSubMenuOpened) }])}"${ssrRenderAttr("src", _imports_0$2)} alt="Open" data-v-1fbd9e88></span><ul class="${ssrRenderClass(["nested-list", { "opened": unref(isSubMenuOpened) }])}" data-v-1fbd9e88><!--[-->`);
+      _push(`<li${ssrRenderAttrs(mergeProps({ class: "nav-item" }, _attrs))} data-v-f597e403><span class="nav-item__title" data-v-f597e403>${ssrInterpolate(__props.item.title)} <img class="${ssrRenderClass(["nav-item__icon", { "rotated": unref(isSubMenuOpened) }])}"${ssrRenderAttr("src", _imports_0$2)} alt="Open" data-v-f597e403></span><ul class="${ssrRenderClass(["nested-list", { "opened": unref(isSubMenuOpened) }])}" data-v-f597e403><!--[-->`);
       ssrRenderList(__props.item.categories, (category) => {
-        _push(`<li class="nav-item__nested-item" data-v-1fbd9e88>`);
+        _push(`<li class="nav-item__nested-item" data-v-f597e403>`);
         _push(ssrRenderComponent(_component_NuxtLink, {
           onClick: unref(NavStore).toggleNav,
-          to: { path: "/categories", query: { category: category.category } }
+          to: {
+            path: `/categories/${category.category}`
+            // query: {category: category.category}
+          }
         }, {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
@@ -2034,7 +2035,7 @@ _sfc_main$7.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/navbar/NavbarItemVue.vue");
   return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-1fbd9e88"]]);
+const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-f597e403"]]);
 const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "NavbarListVue",
   __ssrInlineRender: true,
@@ -2159,7 +2160,12 @@ _sfc_main$6.setup = (props, ctx) => {
 const NavbarListVue = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-b399ae8b"]]);
 const useCartStore = defineStore("CartStore", {
   state: () => ({
-    cart: []
+    cart: [],
+    //All cart items
+    productOnRemove: {},
+    //If user wants to remove product from cart 
+    isModalOpened: false,
+    isCheckoutOpened: false
   }),
   getters: {
     getCartCount: (state) => {
@@ -2174,18 +2180,62 @@ const useCartStore = defineStore("CartStore", {
           name: product.name,
           colors: product.colors,
           size,
-          quantity: 1
+          quantity: 1,
+          images: product.images,
+          brand: product.brand,
+          price: product.price,
+          gender: product.gender
         });
       } else {
         const productInstance = this.cart.find((item) => item.id == product.id && item.size == size);
-        productInstance.quantity++;
+        if (productInstance) {
+          productInstance.quantity++;
+        }
       }
-      console.log(this.cart);
+      this.saveCartToLocalStorage();
     },
-    isProductInCart(product, size) {
+    isProductInCart(product, size, colors) {
       return this.cart.find((item) => {
         return item.id === product.id && item.size === size;
       });
+    },
+    setProductOnRemove(id, size) {
+      let instance = this.cart.find((item) => item.id == id && item.size == size);
+      if (instance) {
+        let { id: id2, size: size2 } = instance;
+        this.productOnRemove.id = id2;
+        this.productOnRemove.size = size2;
+      }
+    },
+    removeFromCart() {
+      this.cart = this.cart.filter((item) => {
+        return !(item.id == this.productOnRemove.id && item.size == this.productOnRemove.size);
+      });
+      this.saveCartToLocalStorage();
+      this.closeModal();
+    },
+    closeModal() {
+      this.isModalOpened = false;
+    },
+    openModal() {
+      this.isModalOpened = true;
+    },
+    initCartStorage() {
+      let storage = localStorage.getItem("cart");
+      if (storage) {
+        this.cart = JSON.parse(storage);
+        return;
+      }
+      this.cart = [];
+    },
+    saveCartToLocalStorage() {
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+    openCheckout() {
+      this.isCheckoutOpened = true;
+    },
+    closeCheckout() {
+      this.isCheckoutOpened = false;
     }
   }
 });
@@ -2282,7 +2332,7 @@ _sfc_main$4.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/HeaderVue.vue");
   return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
-const __nuxt_component_5 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-8075ab3b"]]);
+const __nuxt_component_6 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-8075ab3b"]]);
 const RouteProvider = defineComponent({
   props: {
     vnode: {
@@ -2312,7 +2362,7 @@ const RouteProvider = defineComponent({
     };
   }
 });
-const __nuxt_component_6 = defineComponent({
+const __nuxt_component_7 = defineComponent({
   name: "NuxtPage",
   inheritAttrs: false,
   props: {
@@ -2444,14 +2494,16 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "app",
   __ssrInlineRender: true,
   setup(__props) {
+    useCartStore();
     return (_ctx, _push, _parent, _attrs) => {
       const _component_Html = Html;
       const _component_Head = Head;
       const _component_Title = Title;
       const _component_Link = Link;
       const _component_Body = Body;
-      const _component_HeaderVue = __nuxt_component_5;
-      const _component_NuxtPage = __nuxt_component_6;
+      const _component_ClientOnly = __nuxt_component_5;
+      const _component_HeaderVue = __nuxt_component_6;
+      const _component_NuxtPage = __nuxt_component_7;
       _push(ssrRenderComponent(_component_Html, _attrs, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -2496,18 +2548,19 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
             _push2(ssrRenderComponent(_component_Body, null, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(ssrRenderComponent(_component_HeaderVue, null, null, _parent3, _scopeId2));
-                  _push3(`<main class="main"${_scopeId2}>`);
-                  _push3(ssrRenderComponent(_component_NuxtPage, null, null, _parent3, _scopeId2));
-                  _push3(`</main>`);
-                  _push3(ssrRenderComponent(FooterVue, null, null, _parent3, _scopeId2));
+                  _push3(ssrRenderComponent(_component_ClientOnly, null, {}, _parent3, _scopeId2));
                 } else {
                   return [
-                    createVNode(_component_HeaderVue),
-                    createVNode("main", { class: "main" }, [
-                      createVNode(_component_NuxtPage)
-                    ]),
-                    createVNode(FooterVue)
+                    createVNode(_component_ClientOnly, null, {
+                      default: withCtx(() => [
+                        createVNode(_component_HeaderVue),
+                        createVNode("main", { class: "main h-full" }, [
+                          createVNode(_component_NuxtPage, { transition: { name: "page", mode: "out-in" } })
+                        ]),
+                        createVNode(FooterVue)
+                      ]),
+                      _: 1
+                    })
                   ];
                 }
               }),
@@ -2533,11 +2586,16 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
               }),
               createVNode(_component_Body, null, {
                 default: withCtx(() => [
-                  createVNode(_component_HeaderVue),
-                  createVNode("main", { class: "main" }, [
-                    createVNode(_component_NuxtPage)
-                  ]),
-                  createVNode(FooterVue)
+                  createVNode(_component_ClientOnly, null, {
+                    default: withCtx(() => [
+                      createVNode(_component_HeaderVue),
+                      createVNode("main", { class: "main h-full" }, [
+                        createVNode(_component_NuxtPage, { transition: { name: "page", mode: "out-in" } })
+                      ]),
+                      createVNode(FooterVue)
+                    ]),
+                    _: 1
+                  })
                 ]),
                 _: 1
               })
@@ -2655,5 +2713,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { _export_sfc as _, __nuxt_component_0$1 as a, asyncDataDefaults as b, useNuxtApp as c, createError as d, entry$1 as default, useNavStore as e, useRoute as f, _imports_0$3 as g, useCartStore as h, defineStore as i, useHead as u };
+export { _export_sfc as _, __nuxt_component_0$1 as a, asyncDataDefaults as b, useNuxtApp as c, createError as d, entry$1 as default, useCartStore as e, useRoute as f, useNavStore as g, useRouter as h, defineStore as i, _imports_0$3 as j, useHead as u };
 //# sourceMappingURL=server.mjs.map

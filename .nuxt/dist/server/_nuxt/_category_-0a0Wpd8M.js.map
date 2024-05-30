@@ -1,1 +1,0 @@
-{"version":3,"file":"_category_-0a0Wpd8M.js","sources":["../../../../pages/categories/[category].vue"],"sourcesContent":["<script setup lang=\"ts\">\n\nconst route = useRoute();\n\n// ???\n\n</script>\n\n<template>\n    \n</template>"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAEc,aAAS;;;;;;;;;;;"}

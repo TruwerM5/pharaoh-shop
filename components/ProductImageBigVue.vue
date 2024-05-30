@@ -11,10 +11,10 @@ defineProps<{images: string[];}>();
 <template>
     <div v-if="ImagesStore.isGalleryOpened"
     class="images-details">
-        <div class="images-details__inner">
+        <div class="images-details__inner snap-x snap-mandatory">
             <ul class="images-details__list" :style="{transform: `translateX(${-ImagesStore.currentIndex * 100}%)`}">
                 <li v-for="image,i in images" :key="i"
-                class="images-details__item">
+                class="images-details__item snap-center block min-h-full">
                     <img :src="`/images/${image}`" :alt="`${image}`" class="images-details__image">
                 </li>
             </ul>
@@ -46,14 +46,18 @@ defineProps<{images: string[];}>();
     justify-content: center
     z-index: 10
     background-color: #fff
-    overflow: hidden
+    // overflowx-x: scroll
+    // overflow-y: hidden
     &__inner
         position: relative
-        overflow: hidden
+        overflow-x: scroll
+        overflow-y: hidden
+        &::-webkit-scrollbar
+            display: none
     &__list
         margin-bottom: 15px
         display: flex
-        align-items: center
+        gap: 15px
         transition: transform .2s ease-in-out
     &__item
         min-width: 100%
@@ -85,5 +89,7 @@ defineProps<{images: string[];}>();
         position: absolute
         right: 20px
         top: 20px
-
+    &__image
+        height: 100%
+        object-fit: cover
 </style>

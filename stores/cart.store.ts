@@ -5,11 +5,14 @@ export const useCartStore = defineStore('CartStore', {
         cart: <CartProduct[]>([]), //All cart items
         productOnRemove: <RemoveCartProduct>({}), //If user wants to remove product from cart 
         isModalOpened: false,
+        isCheckoutOpened: false,
     }),
     getters: {
         getCartCount: (state) => {
             return state.cart.reduce((acc, item) => item.quantity + acc, 0);
-            
+        },
+        getTotalSum: (state) => {
+            return state.cart.reduce((acc, item) => item.price * item.quantity + acc, 0);
         }
     },
     actions: {
@@ -77,9 +80,17 @@ export const useCartStore = defineStore('CartStore', {
             } 
             //Else cart is empty
             this.cart = [];
+            
+            
         },
         saveCartToLocalStorage() {
             localStorage.setItem('cart', JSON.stringify(this.cart));
+        },
+        openCheckout() {
+            this.isCheckoutOpened = true;
+        },
+        closeCheckout() {
+            this.isCheckoutOpened = false;
         }
     }
 })

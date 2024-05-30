@@ -19,13 +19,14 @@ function moveButton() {
 
 <template>
     <button @click="moveButton"
-    :class="['add-to-cart-btn', {'clicked': isClicked}]">
+    :class="['add-to-cart-btn primary-button', {'clicked': isClicked}]">
+    <span class="add-to-cart-btn__wrapper">
         <span :class="['add-to-cart-btn__inner', {'clicked': isClicked}]">
             <span 
             :class="['add-to-cart-btn__block']">
                 <img class="add-to-cart-btn__icon"
                 src="/images/cart-icon.svg" alt="Добавить в корзину">
-                <span class="add-to-cart-btn__text">Добавить</span>
+                <span class="add-to-cart-btn__text">В корзину</span>
             </span>
             
         </span>
@@ -33,22 +34,24 @@ function moveButton() {
         :class="['add-to-cart-btn__check', {'clicked': isClicked}]">
                 <img :src="'/images/check-icon.svg'" alt="Checked" class="add-to-cart-btn__check-icon">
         </span>
+    </span>
+        
     </button>
 </template>
 
 <style lang="sass" scoped>
 .add-to-cart-btn
-    position: relative
-    width: 100%
-    padding-block: 10px
     gap: 7px
-    background-color: #000
-    border-radius: 5px
     border: none
-    overflow: hidden
     transition: background-color .5s ease-in-out
     &.clicked
         background-color: #03fc56
+        &::after
+            border-color: #03fc56
+    &__wrapper
+        position: relative
+        display: block
+        overflow: hidden
     &__inner
         position: relative
         display: flex
@@ -60,11 +63,13 @@ function moveButton() {
     &__icon
         width: 35px
     &__text
-        font-size: 20px
+        font-size: 16px
         color: #fff
     &__block
         position: relative
         display: flex
+        align-items: center
+        gap: 5px
         height: fit-content
     &__check
         position: absolute

@@ -52,7 +52,7 @@ function move() {
 
 
 onMounted(() => {
-    setInterval(move, 1000);
+    setInterval(move, 1200);
 });
 </script>
 
@@ -102,7 +102,7 @@ onMounted(() => {
 
 .fade-leave-active,
 .fade-enter-active
-    transition: all .1s
+    transition: all .5s
 
 .fade-enter-from,
 .fade-leave-to

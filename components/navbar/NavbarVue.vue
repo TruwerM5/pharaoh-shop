@@ -7,6 +7,12 @@ import { useCartStore } from '~/stores/cart.store';
 
 const NavStore = useNavStore();
 const CartStore = useCartStore();
+const cartCount = computed(() => CartStore.getCartCount);
+const isClient = ref(false);
+
+onMounted(() => {
+    isClient.value = true;
+})
 
 </script>
 <template>
@@ -15,9 +21,9 @@ const CartStore = useCartStore();
         class="nav__cart-btn cart-btn">
             <img class="nav__cart-icon"
             src="/images/cart-icon.svg" alt="Корзина">
-            <span v-if="CartStore.getCartCount > 0"
+            <span v-if="isClient && cartCount"
             class="cart__quantity">
-                {{ CartStore.getCartCount }}
+                {{ cartCount }}
             </span>
         </NuxtLink>
         <NavbarButtonVue @click="NavStore.toggleNav"

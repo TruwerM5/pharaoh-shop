@@ -1,0 +1,6 @@
+const _id__vue_vue_type_style_index_0_scoped_e7ab024d_lang = ".product-details[data-v-e7ab024d]{position:relative}.product-info[data-v-e7ab024d]{display:flex;flex-direction:column;gap:10px}.product-info__name[data-v-e7ab024d]{font-size:20px}.product-info__price[data-v-e7ab024d]{font-size:22px}.product-info__color[data-v-e7ab024d]{font-size:14px}.error__text[data-v-e7ab024d]{font-size:20px}.go-back-btn[data-v-e7ab024d]{border:1px solid #000;display:inline-block;padding:5px;position:absolute;right:30px;top:0}.sizes[data-v-e7ab024d]{align-items:center;display:flex;flex-wrap:wrap;gap:5px}.sizes__title[data-v-e7ab024d]{font-size:14px}.sizes__text[data-v-e7ab024d]{font-size:12px;text-transform:uppercase}.sizes__btn[data-v-e7ab024d]{align-items:center;border:1px solid #000;display:flex;height:30px;justify-content:center;padding:5px;transition:color .2s ease-in-out,background-color .2s ease-in-out;width:30px}.sizes__btn.selected[data-v-e7ab024d]{background-color:#000;color:#fff}.product-about[data-v-e7ab024d]{margin-block:35px}.product-about__title[data-v-e7ab024d]{font-size:26px}.product-about__text[data-v-e7ab024d]{font-size:16px}";
+
+const _id_Styles_CxQzItF_ = [_id__vue_vue_type_style_index_0_scoped_e7ab024d_lang];
+
+export { _id_Styles_CxQzItF_ as default };
+//# sourceMappingURL=_id_-styles.CxQzItF-.mjs.map

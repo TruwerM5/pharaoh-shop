@@ -2,12 +2,17 @@
 //Cart page
 import { useCartStore } from '~/stores/cart.store';
 const CartStore = useCartStore();
+const isClient = ref(false);
 
+onMounted(() => {
+    isClient.value = true;
+})
 </script>
 
 <template>
-    
-        <div class="cart page">
+        
+        <div v-if="isClient"
+        class="cart page h-full">
             <h1 class="cart__title page-title">Корзина ({{ CartStore.getCartCount }})</h1>
             <template v-if="CartStore.getCartCount == 0">
                 <AlertVue>
@@ -16,18 +21,42 @@ const CartStore = useCartStore();
                     </template>
                 </AlertVue>
             </template>
-            <div v-else class="cart__inner">
-                <ScrollVue>
+            <div v-else class="cart__inner h-full">
+                <ScrollVue class="flex flex-col flex-1">
                     <template #content>
-                        <CartListVue :cart-list="CartStore.cart" />
+                        <div class="flex flex-col justify-between h-full flex-1">
+                            <CartListVue :cart-list="CartStore.cart" />
+                            <button @click="CartStore.openCheckout"
+                            class="cart__open-checkout primary-button">Заказать</button>
+                        </div>
+                        
                     </template>
-                    
                 </ScrollVue>
             </div>
             <ModalWindowVue />
+            <Transition name="checkout" >
+                <CheckoutVue v-if="CartStore.isCheckoutOpened" />
+            </Transition>
         </div>
 </template>
 
-<style lang="sass" scoped> 
+<style lang="sass" scoped>
+.cart
+    display: flex
+    flex-direction: column
+    flex: 1
+    &__inner
+        flex: 1
+        display: flex
+        flex-direction: column
 
+
+.checkout-leave-active,
+.checkout-enter-active
+    transition: all .2s
+
+.checkout-enter-from,
+.checkout-leave-to
+    transform: translateY(30px)
+    opacity: 0
 </style>

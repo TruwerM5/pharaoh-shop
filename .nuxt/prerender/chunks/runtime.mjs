@@ -57,7 +57,7 @@ function _expandFromEnv(value) {
 
 const inlineAppConfig = {
   "nuxt": {
-    "buildId": "377c052b-a8d1-413b-8aff-48167d725e52"
+    "buildId": "85ea1e32-4cdc-4aa5-b412-1e8674441cbe"
   }
 };
 
@@ -94,7 +94,8 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {},
+  "apiBase": ""
 };
 const envOptions = {
   prefix: "NITRO_",

@@ -8,33 +8,27 @@ const delta = ref(0);
 const router = useRouter();
 
 onMounted(() => {
-    if(container.value && container.value.getBoundingClientRect().top < 100) {
-        isActive.value = true;
+    if(process.client) {
+        if(container.value && container.value.getBoundingClientRect().top < 100) {
+            isActive.value = true;
+        }
     }
-    // document.addEventListener('scroll', (e:any) => {
-        
-        
-    // });
-});
-
-onUnmounted(() => {
-    document.removeEventListener('scroll', () => {
-        delta.value = 0;
-        container.value = null;
-    });
+    
 });
 
 </script>
 
 <template>
-    <Transition name="scroll">
-        <div v-show="isActive"
-        class="scroll-block" ref="container">
-            <slot name="content">
-                
-            </slot>
-        </div>
-    </Transition>
+
+        <Transition name="scroll">
+            <div v-show="isActive"
+            class="scroll-block h-full" ref="container">
+                <slot name="content">
+                    
+                </slot>
+            </div>
+        </Transition>
+    
 </template>
 
 <style lang="sass" scoped>

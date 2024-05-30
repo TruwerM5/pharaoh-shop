@@ -27,9 +27,9 @@ defineProps<{list: {id: number; image: string}[]; reverse?: boolean;}>();
     align-items: center
     gap: 20px
     width: fit-content
-    animation: slide 10s infinite alternate linear
+    animation: slide 20s infinite alternate linear
     &.reverse
-        animation: slidereverse 10s infinite alternate linear
+        animation: slidereverse 20s infinite alternate linear
 .brand-item
     display: flex
     position: relative
