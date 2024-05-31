@@ -27,7 +27,7 @@ onMounted(() => {
                         <div class="flex flex-col justify-between h-full flex-1">
                             <CartListVue :cart-list="CartStore.cart" />
                             <button @click="CartStore.openCheckout"
-                            class="cart__open-checkout primary-button">Заказать</button>
+                            class="cart__open-checkout-button primary-button">Заказать</button>
                         </div>
                         
                     </template>
@@ -49,7 +49,8 @@ onMounted(() => {
         flex: 1
         display: flex
         flex-direction: column
-
+    &__open-checkout-button
+        margin-bottom: 40px
 
 .checkout-leave-active,
 .checkout-enter-active

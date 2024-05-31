@@ -99,7 +99,8 @@ export const useProductsStore = defineStore('ProductsStore', {
             ['sneakers', 'кеды'],
             ['slates', 'сланцы'],
             ['jeans', 'джинсы'],
-        ]
+        ],
+        areFiltersOpened: false,
     }),
     actions: {
         getById(id: number) {
@@ -120,6 +121,12 @@ export const useProductsStore = defineStore('ProductsStore', {
                     return true;
                 }
             });
+        },
+        openFilters() {
+            this.areFiltersOpened = true;
+        },
+        closeFilters() {
+            this.areFiltersOpened = false;
         }
     }
 })

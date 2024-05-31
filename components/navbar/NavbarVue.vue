@@ -18,6 +18,7 @@ onMounted(() => {
 <template>
     <nav class="nav">
         <NuxtLink to="/cart"
+        @click="NavStore.closeNav"
         class="nav__cart-btn cart-btn">
             <img class="nav__cart-icon"
             src="/images/cart-icon.svg" alt="Корзина">

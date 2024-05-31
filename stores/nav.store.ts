@@ -9,5 +9,11 @@ export const useNavStore = defineStore('navStore', {
         toggleNav() {
             this.is_opened = !this.is_opened;
         },
+        closeNav() {
+            this.is_opened = false;
+        },
+        openNav() {
+            this.is_opened = true;
+        }
     }
 })

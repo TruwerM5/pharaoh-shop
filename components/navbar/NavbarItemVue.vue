@@ -46,7 +46,7 @@ function toggleSubMenu(id: number) {
 
 .nav-item
     position: relative
-    font-size: 20px
+    font-size: 22px
     color: #fff
     overflow: hidden
     cursor: pointer
@@ -58,7 +58,7 @@ function toggleSubMenu(id: number) {
     &__nested-item
         display: block
         width: 100%
-        font-size: 16px
+        font-size: 20px
     &__icon
         position: absolute
         left: 120%
@@ -75,8 +75,8 @@ function toggleSubMenu(id: number) {
     display: flex
     flex-direction: column
     align-items: flex-start
-    gap: 10px
+    gap: 13px
     transition: max-height .3s ease-in-out
     &.opened
-        max-height: 160px
+        max-height: 190px
 </style>

@@ -3,18 +3,37 @@
 import { useImagesStore } from '~/stores/images.store';
 
 const ImagesStore = useImagesStore();
+const container = ref<any>(null);
+const item = ref<any>(null);
+const buttons = ref<any>(null);
+
 defineProps<{images: string[];}>();
 
+onMounted(() => {
+    // При монтировании галерея остается недоступной из-за v-if
+    watch(item, (newValue) => {
+        //Поэтому отслеживаем изменения одного из элементов после монтирования
+        buttons.value.forEach((button: any) => {
+            //Добавляем к каждой кнопке обработчик
+            button.addEventListener('click', (e: any) => {
+                //Скроллим при нажатии на кнопку 
+                container.value.scrollTo(newValue[0].clientWidth * button.dataset.index, 0);
+            });
+        })
+    });
+});
 
 </script>
 
 <template>
     <div v-if="ImagesStore.isGalleryOpened"
     class="images-details">
-        <div class="images-details__inner snap-x snap-mandatory">
-            <ul class="images-details__list" :style="{transform: `translateX(${-ImagesStore.currentIndex * 100}%)`}">
+        <div class="images-details__inner snap-x snap-mandatory" ref="container">
+            <ul class="images-details__list">
                 <li v-for="image,i in images" :key="i"
-                class="images-details__item snap-center block min-h-full">
+                class="images-details__item snap-center block min-h-full"
+                ref="item"
+                :data-index="i">
                     <img :src="`/images/${image}`" :alt="`${image}`" class="images-details__image">
                 </li>
             </ul>
@@ -22,7 +41,9 @@ defineProps<{images: string[];}>();
         <div class="images-details__buttons">
             <button v-for="icon,i in images" :key="i"
             @click="ImagesStore.setCurrentIndex(i)"
-            :class="['images-details__btn', {'active': ImagesStore.currentIndex == i}]">
+            :class="['images-details__btn']"
+            ref="buttons"
+            :data-index="i">
                 <img :src="`/images/${icon}`" :alt="`${i}`" class="images-details__btn-icon">
             </button>
         </div>
@@ -52,6 +73,7 @@ defineProps<{images: string[];}>();
         position: relative
         overflow-x: scroll
         overflow-y: hidden
+        scroll-behavior: smooth
         &::-webkit-scrollbar
             display: none
     &__list

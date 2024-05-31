@@ -591,7 +591,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./cart-C79jhGzv.mjs').then((m) => m.default || m)
+    component: () => import('./cart-D3emoqHR.mjs').then((m) => m.default || m)
   },
   {
     name: "categories-category",
@@ -599,7 +599,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_category_-oa-NEsr3.mjs').then((m) => m.default || m)
+    component: () => import('./_category_-qMC81qnn.mjs').then((m) => m.default || m)
   },
   {
     name: "categoriesw",
@@ -607,7 +607,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./categoriesw-Dg0_mnM8.mjs').then((m) => m.default || m)
+    component: () => import('./categoriesw-B8tO0GpY.mjs').then((m) => m.default || m)
   },
   {
     name: "HomePage",
@@ -631,7 +631,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_id_-7KML4zjj.mjs').then((m) => m.default || m)
+    component: () => import('./_id_-B0Da_lMf.mjs').then((m) => m.default || m)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1440,7 +1440,7 @@ function definePayloadReducer(name, reduce) {
   }
 }
 const clientOnlySymbol = Symbol.for("nuxt:client-only");
-const __nuxt_component_5 = defineComponent({
+defineComponent({
   name: "ClientOnly",
   inheritAttrs: false,
   // eslint-disable-next-line vue/require-prop-types
@@ -2170,6 +2170,9 @@ const useCartStore = defineStore("CartStore", {
   getters: {
     getCartCount: (state) => {
       return state.cart.reduce((acc, item) => item.quantity + acc, 0);
+    },
+    getTotalSum: (state) => {
+      return state.cart.reduce((acc, item) => item.price * item.quantity + acc, 0);
     }
   },
   actions: {
@@ -2245,19 +2248,21 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const NavStore = useNavStore();
     const CartStore = useCartStore();
+    const cartCount = computed(() => CartStore.getCartCount);
+    const isClient = ref(false);
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0$1;
       const _component_NavbarButtonVue = __nuxt_component_1$1;
-      _push(`<nav${ssrRenderAttrs(mergeProps({ class: "nav" }, _attrs))} data-v-97e732d3>`);
+      _push(`<nav${ssrRenderAttrs(mergeProps({ class: "nav" }, _attrs))} data-v-bb0f9d50>`);
       _push(ssrRenderComponent(_component_NuxtLink, {
         to: "/cart",
         class: "nav__cart-btn cart-btn"
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img class="nav__cart-icon"${ssrRenderAttr("src", _imports_0$3)} alt="Корзина" data-v-97e732d3${_scopeId}>`);
-            if (unref(CartStore).getCartCount > 0) {
-              _push2(`<span class="cart__quantity" data-v-97e732d3${_scopeId}>${ssrInterpolate(unref(CartStore).getCartCount)}</span>`);
+            _push2(`<img class="nav__cart-icon"${ssrRenderAttr("src", _imports_0$3)} alt="Корзина" data-v-bb0f9d50${_scopeId}>`);
+            if (unref(isClient) && unref(cartCount)) {
+              _push2(`<span class="cart__quantity" data-v-bb0f9d50${_scopeId}>${ssrInterpolate(unref(cartCount))}</span>`);
             } else {
               _push2(`<!---->`);
             }
@@ -2268,10 +2273,10 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                 src: _imports_0$3,
                 alt: "Корзина"
               }),
-              unref(CartStore).getCartCount > 0 ? (openBlock(), createBlock("span", {
+              unref(isClient) && unref(cartCount) ? (openBlock(), createBlock("span", {
                 key: 0,
                 class: "cart__quantity"
-              }, toDisplayString(unref(CartStore).getCartCount), 1)) : createCommentVNode("", true)
+              }, toDisplayString(unref(cartCount)), 1)) : createCommentVNode("", true)
             ];
           }
         }),
@@ -2281,7 +2286,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         onClick: unref(NavStore).toggleNav,
         "is-opened": unref(NavStore).is_opened
       }, null, _parent));
-      _push(`<div class="${ssrRenderClass(["nav__inner", { "opened": unref(NavStore).is_opened }])}" data-v-97e732d3>`);
+      _push(`<div class="${ssrRenderClass(["nav__inner", { "opened": unref(NavStore).is_opened }])}" data-v-bb0f9d50>`);
       _push(ssrRenderComponent(NavbarListVue, {
         class: { "opened": unref(NavStore).is_opened },
         "is-opened": unref(NavStore).is_opened
@@ -2296,7 +2301,7 @@ _sfc_main$5.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/navbar/NavbarVue.vue");
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const __nuxt_component_1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-97e732d3"]]);
+const __nuxt_component_1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-bb0f9d50"]]);
 const _imports_0$1 = publicAssetsURL("/images/3.png");
 const _sfc_main$4 = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
@@ -2332,7 +2337,7 @@ _sfc_main$4.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/HeaderVue.vue");
   return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
-const __nuxt_component_6 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-8075ab3b"]]);
+const __nuxt_component_5 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-8075ab3b"]]);
 const RouteProvider = defineComponent({
   props: {
     vnode: {
@@ -2362,7 +2367,7 @@ const RouteProvider = defineComponent({
     };
   }
 });
-const __nuxt_component_7 = defineComponent({
+const __nuxt_component_6 = defineComponent({
   name: "NuxtPage",
   inheritAttrs: false,
   props: {
@@ -2501,9 +2506,8 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       const _component_Title = Title;
       const _component_Link = Link;
       const _component_Body = Body;
-      const _component_ClientOnly = __nuxt_component_5;
-      const _component_HeaderVue = __nuxt_component_6;
-      const _component_NuxtPage = __nuxt_component_7;
+      const _component_HeaderVue = __nuxt_component_5;
+      const _component_NuxtPage = __nuxt_component_6;
       _push(ssrRenderComponent(_component_Html, _attrs, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -2548,19 +2552,18 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
             _push2(ssrRenderComponent(_component_Body, null, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(ssrRenderComponent(_component_ClientOnly, null, {}, _parent3, _scopeId2));
+                  _push3(ssrRenderComponent(_component_HeaderVue, null, null, _parent3, _scopeId2));
+                  _push3(`<main class="main h-full"${_scopeId2}>`);
+                  _push3(ssrRenderComponent(_component_NuxtPage, { transition: { name: "page", mode: "out-in" } }, null, _parent3, _scopeId2));
+                  _push3(`</main>`);
+                  _push3(ssrRenderComponent(FooterVue, null, null, _parent3, _scopeId2));
                 } else {
                   return [
-                    createVNode(_component_ClientOnly, null, {
-                      default: withCtx(() => [
-                        createVNode(_component_HeaderVue),
-                        createVNode("main", { class: "main h-full" }, [
-                          createVNode(_component_NuxtPage, { transition: { name: "page", mode: "out-in" } })
-                        ]),
-                        createVNode(FooterVue)
-                      ]),
-                      _: 1
-                    })
+                    createVNode(_component_HeaderVue),
+                    createVNode("main", { class: "main h-full" }, [
+                      createVNode(_component_NuxtPage, { transition: { name: "page", mode: "out-in" } })
+                    ]),
+                    createVNode(FooterVue)
                   ];
                 }
               }),
@@ -2586,16 +2589,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
               }),
               createVNode(_component_Body, null, {
                 default: withCtx(() => [
-                  createVNode(_component_ClientOnly, null, {
-                    default: withCtx(() => [
-                      createVNode(_component_HeaderVue),
-                      createVNode("main", { class: "main h-full" }, [
-                        createVNode(_component_NuxtPage, { transition: { name: "page", mode: "out-in" } })
-                      ]),
-                      createVNode(FooterVue)
-                    ]),
-                    _: 1
-                  })
+                  createVNode(_component_HeaderVue),
+                  createVNode("main", { class: "main h-full" }, [
+                    createVNode(_component_NuxtPage, { transition: { name: "page", mode: "out-in" } })
+                  ]),
+                  createVNode(FooterVue)
                 ]),
                 _: 1
               })
