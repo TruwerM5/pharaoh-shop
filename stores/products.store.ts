@@ -101,6 +101,8 @@ export const useProductsStore = defineStore('ProductsStore', {
             ['jeans', 'джинсы'],
         ],
         areFiltersOpened: false,
+        
+        filteredProducts: <Product[]>[],
     }),
     actions: {
         getById(id: number) {
@@ -127,6 +129,14 @@ export const useProductsStore = defineStore('ProductsStore', {
         },
         closeFilters() {
             this.areFiltersOpened = false;
+        },
+        setFilters(category: string | string[], brand?: LocationQueryValue | LocationQueryValue[], gender?: LocationQueryValue | LocationQueryValue[]) {
+            this.filteredProducts = this.products.filter(product => {
+               return (!brand || product.brand == brand) &&
+                      (!gender || product.gender == gender) &&
+                      product.category == category;
+            });
+
         }
     }
 })

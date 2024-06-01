@@ -9,8 +9,8 @@ const CartStore = useCartStore();
 
 
 <template>
-    <div class="checkout">
-        <button class="checkout__close-btn" @click="CartStore.closeCheckout">
+    <div class="checkout modal">
+        <button class="checkout__close-btn modal__close-btn" @click="CartStore.closeCheckout">
             <img src="/images/close-icon.svg" alt="Отмена">
         </button>
         <div class="checkout__inner">
@@ -58,21 +58,6 @@ const CartStore = useCartStore();
 
 <style lang="sass" scoped>
 .checkout
-    position: fixed
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    padding-block: 50px
-    display: grid
-    place-items: center
-    z-index: 10
-    background-color: #fff
-    overflow: scroll
-    &__close-btn
-        position: absolute
-        top: 30px
-        right: 30px
     &__form
         display: flex
         flex-direction: column

@@ -34,7 +34,7 @@ onMounted(() => {
                 </ScrollVue>
             </div>
             <ModalWindowVue />
-            <Transition name="checkout" >
+            <Transition name="modal" >
                 <CheckoutVue v-if="CartStore.isCheckoutOpened" />
             </Transition>
         </div>
@@ -51,13 +51,4 @@ onMounted(() => {
         flex-direction: column
     &__open-checkout-button
         margin-bottom: 40px
-
-.checkout-leave-active,
-.checkout-enter-active
-    transition: all .2s
-
-.checkout-enter-from,
-.checkout-leave-to
-    transform: translateY(30px)
-    opacity: 0
 </style>

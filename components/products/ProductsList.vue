@@ -13,14 +13,8 @@ const route = useRoute();
 
 <template>
     <div class="products-list">
-        <AlertVue v-if="!products.length">
-            <template #message>
-                <span class="alert-message text-[16px] test-rose-500">
-                    Извините, по вашему запросу ничего найдено.
-                </span>
-            </template>
-        </AlertVue>
-        <ul v-else
+        
+        <ul
         class="products-list__inner">
             <ProductsItemVue v-for="item in products" :key="item.id" :product="item" />
         </ul>
