@@ -26,32 +26,34 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-if="ImagesStore.isGalleryOpened"
-    class="images-details">
-        <div class="images-details__inner snap-x snap-mandatory" ref="container">
-            <ul class="images-details__list">
-                <li v-for="image,i in images" :key="i"
-                class="images-details__item snap-center block min-h-full"
-                ref="item"
+    <Transition name="modal">
+        <div v-if="ImagesStore.isGalleryOpened"
+            class="images-details">
+            <div class="images-details__inner snap-x snap-mandatory" ref="container">
+                <ul class="images-details__list">
+                    <li v-for="image,i in images" :key="i"
+                    class="images-details__item snap-center block min-h-full"
+                    ref="item"
+                    :data-index="i">
+                        <img :src="`/images/${image}`" :alt="`${image}`" class="images-details__image">
+                    </li>
+                </ul>
+            </div>
+            <div class="images-details__buttons">
+                <button v-for="icon,i in images" :key="i"
+                @click="ImagesStore.setCurrentIndex(i)"
+                :class="['images-details__btn']"
+                ref="buttons"
                 :data-index="i">
-                    <img :src="`/images/${image}`" :alt="`${image}`" class="images-details__image">
-                </li>
-            </ul>
-        </div>
-        <div class="images-details__buttons">
-            <button v-for="icon,i in images" :key="i"
-            @click="ImagesStore.setCurrentIndex(i)"
-            :class="['images-details__btn']"
-            ref="buttons"
-            :data-index="i">
-                <img :src="`/images/${icon}`" :alt="`${i}`" class="images-details__btn-icon">
+                    <img :src="`/images/${icon}`" :alt="`${i}`" class="images-details__btn-icon">
+                </button>
+            </div>
+            <button @click="ImagesStore.closeGallery"
+            class="images-details__close-btn">
+                <img src="/images/close-icon.svg" alt="Закрыть" class="images-details__icon">
             </button>
         </div>
-        <button @click="ImagesStore.closeGallery"
-        class="images-details__close-btn">
-            <img src="/images/close-icon.svg" alt="Закрыть" class="images-details__icon">
-        </button>
-    </div>
+    </Transition>
 </template>
 
 <style lang="sass" scoped>
@@ -67,8 +69,6 @@ onMounted(() => {
     justify-content: center
     z-index: 10
     background-color: #fff
-    // overflowx-x: scroll
-    // overflow-y: hidden
     &__inner
         position: relative
         overflow-x: scroll

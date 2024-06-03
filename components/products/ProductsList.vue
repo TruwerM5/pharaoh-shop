@@ -3,11 +3,7 @@
 import type { Product } from '~/types/product';
 import { useNavStore } from '#imports';
 
-
 const props = defineProps<{products: Product[]}>();
-const NavStore = useNavStore();
-const route = useRoute();
-
 
 </script>
 

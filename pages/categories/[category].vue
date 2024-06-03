@@ -1,38 +1,64 @@
 <script setup lang="ts">
 
 import { useProductsStore } from '~/stores/products.store';
-import type { Product } from '~/types/product';
-const route = useRoute();
+
+definePageMeta({
+    middleware: ['categories-middleware'],
+})
+
+// const route = useRoute();
+const router = useRouter();
 const ProductsStore = useProductsStore();
-const data = ref<Product[]>([]);
 const title = ref<string | string[] | undefined>('');
 const filtered = computed(() => ProductsStore.filteredProducts);
+const filters = ref({
+    gender: <'male' | 'female' | 'unisex' | ''>(''),
+    brand: '',
+    
+});
 
-if(filtered.value.length > 0) {
-    data.value = filtered.value;
-} else {
-    data.value = ProductsStore.products.filter(item => {    
-        return item.category == route.params.category;
-    });
-}
 
-watch(filtered, (newFilter) => {
-    data.value = newFilter;
+
+onMounted(() => {
+    ProductsStore.isClient = true;
 })
 
 
-title.value = ProductsStore.getCategoryTitle(route.params.category);
+watch(filtered, (newFilter) => {
+    //Отслеживаем изменения массива filtered
+    ProductsStore.setCurrentProducts(newFilter);
+})
 
+watch(filters.value, (newFilter) => {
+   //Отслеживаем изменения внутри filters и сразу применяем 
+    let query: {brand?: string; gender?: string;} = { };
+    // ProductsStore.setFilters(newFilter, props.category);
+    if(newFilter.brand) {
+        query.brand = newFilter.brand;
+    }
+    if(newFilter.gender) {
+        query.gender = newFilter.gender;
+    }
+    //Добавляем запрос в строку браузера
+    router.push({ query });
+});
 
-
-
+//Заголовок страницы
+// title.value = ProductsStore.getCategoryTitle(route.params.category);
+onBeforeRouteUpdate(() => {
+  
+    ProductsStore.isClient = false;    
+  
+    
+})
 </script>
 
 <template>
     
-    <div class="categories page">
-        <ScrollVue>
-            <template #content>
+    <div v-if="ProductsStore.isClient"
+    class="categories page">
+        <!-- <ScrollVue>
+            <template #content> -->
                     <div class="categories__nav page-nav">
                         <h1 class="categories__title page-title">{{ title ? title[1] : ''  }}</h1>
                         <button 
@@ -41,8 +67,8 @@ title.value = ProductsStore.getCategoryTitle(route.params.category);
                             <img src="/images/filter.svg" alt="Фильтры" class="categories__filter-icon">
                         </button>
                     </div>
-                    <template v-if="data.length > 0">
-                        <ProductsList :products="data" />
+                    <template v-if="ProductsStore.currentProducts.length > 0">
+                        <ProductsList :products="ProductsStore.currentProducts" />
                     </template>
                     <template v-else>
                         <AlertVue >
@@ -53,10 +79,10 @@ title.value = ProductsStore.getCategoryTitle(route.params.category);
                             </template>
                         </AlertVue>
                     </template>
-            </template>
-        </ScrollVue>
+            <!-- </template>
+        </ScrollVue> -->
         <Transition name="modal">
-            <FiltersVue v-show="ProductsStore.areFiltersOpened" :category="route.params.category" />
+            <FiltersVue v-show="ProductsStore.areFiltersOpened" :filters="filters" />
         </Transition>
         
     </div>

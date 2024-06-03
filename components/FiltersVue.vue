@@ -1,38 +1,23 @@
 <script setup lang="ts">
 
 import { useProductsStore } from '#imports';
-const router = useRouter();
-const ProductsStore = useProductsStore();
+
+
+
+defineProps<{filters: {gender: string; brand: string;}}>();
+
 const brandsList = ref(['adidas', 'new-balance', 'puma', 'reebok', 'carthartt', 'nike']);
-
+const ProductsStore = useProductsStore();
 //price gender color brand
-const props = defineProps<{category: string | string[];}>();
-const filters = ref({
-    gender: <'male' | 'female' | 'unisex' | ''>(''),
-    brand: '',
-    
-});
 
 
-onBeforeRouteUpdate((to, from) => {
-    ProductsStore.setFilters(props.category, to.query.brand, to.query.gender)
-})
 
-watch(filters.value, (newFilter) => {
-   //Отслеживаем изменения внутри filters и сразу применяем 
-    let query: {brand?: string; gender?: string;} = {
-        
-    };
-    // ProductsStore.setFilters(newFilter, props.category);
-    if(newFilter.brand) {
-        query.brand = newFilter.brand;
-    }
-    if(newFilter.gender) {
-        query.gender = newFilter.gender;
-    }
-    //Добавляем запрос в строку браузера
-    router.push({ query });
-});
+// onBeforeRouteUpdate((to, from) => {
+//     ProductsStore.setFilters(props.category, to.query.brand, to.query.gender)
+// })
+
+
+
 </script>
 
 

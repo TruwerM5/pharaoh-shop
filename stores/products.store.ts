@@ -103,6 +103,8 @@ export const useProductsStore = defineStore('ProductsStore', {
         areFiltersOpened: false,
         
         filteredProducts: <Product[]>[],
+        currentProducts: <Product[]>[],
+        isClient: false,
     }),
     actions: {
         getById(id: number) {
@@ -136,7 +138,9 @@ export const useProductsStore = defineStore('ProductsStore', {
                       (!gender || product.gender == gender) &&
                       product.category == category;
             });
-
+        },
+        setCurrentProducts(instance: Product[]) {
+            this.currentProducts = instance;
         }
     }
 })
