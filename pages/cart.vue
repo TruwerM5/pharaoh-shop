@@ -33,7 +33,10 @@ onMounted(() => {
                     </template>
                 </ScrollVue>
             </div>
-            <ModalWindowVue />
+            <Transition name="modal">
+                <ModalWindowVue v-if="CartStore.isModalOpened" />
+            </Transition>
+            
             <Transition name="modal" >
                 <CheckoutVue v-if="CartStore.isCheckoutOpened" />
             </Transition>
@@ -45,6 +48,7 @@ onMounted(() => {
     display: flex
     flex-direction: column
     flex: 1
+    min-width: 100%
     &__inner
         flex: 1
         display: flex

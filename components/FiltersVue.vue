@@ -2,28 +2,38 @@
 
 import { useProductsStore } from '#imports';
 
+import type { Filters } from '~/types/filters';
 
+defineProps<{filters: Filters}>();
 
-defineProps<{filters: {gender: string; brand: string;}}>();
-
-const brandsList = ref(['adidas', 'new-balance', 'puma', 'reebok', 'carthartt', 'nike']);
+const brandsList = ref<string[]>([
+    'adidas', 
+    'new-balance', 
+    'puma', 
+    'reebok', 
+    'carhartt', 
+    'nike', 
+    'the-north-face', 
+    'stone-island'
+]);
+const gendersList = ref<{gender: string; title: string}[]>([
+    {
+        gender: 'male',
+        title: 'Мужской'
+    },{
+        gender: 'female',
+        title: 'Женский'
+    },{
+        gender: 'unisex',
+        title: 'Унисекс'
+    },
+])
 const ProductsStore = useProductsStore();
+
+
 //price gender color brand
 
-
-
-// onBeforeRouteUpdate((to, from) => {
-//     ProductsStore.setFilters(props.category, to.query.brand, to.query.gender)
-// })
-
-
-
 </script>
-
-
-
-
-
 <template>
     <div class="filters modal">    
         <div class="filters__inner">
@@ -31,25 +41,48 @@ const ProductsStore = useProductsStore();
                 <span class="filters__label">
                     Пол: 
                 </span>
-                <select v-model="filters.gender"
+                <select v-model="filters.gender" placeholder="Не выбрано"
                     name="gender" id="gender" class="filters__select">
-                    <option value="">Не выбрано</option>
-                    <option value="unisex">Унисекс</option>
-                    <option value="male">Мужской</option>
-                    <option value="female">Женский</option>
+                    <option value="" selected placeholder="Не выбрано">Не выбрано</option>
+                    <option v-for="gender,i in gendersList" :key="i"
+                    :value="gender.gender">{{ gender.title }}</option>
+                    <!-- <option value="female">Женский</option>
+                    <option value="unisex">Унисекс</option> -->
                 </select>
             </div>
             <div class="filters__block">
                 <span class="filters__label">
                     Бренд: 
                 </span>
-                <select v-model="filters.brand"
-                    name="gender" id="gender" class="filters__select">
-                    <option value="" selected>Не выбрано</option>
+                <select v-model="filters.brand" placeholder="Не выбрано"
+                    name="brand" id="brand" class="filters__select">
+                    <option value="" selected placeholder="Не выбрано">Не выбрано</option>
                     <option v-for="brand,i in brandsList" :key="i"
-                    :value="brand" class="capitalize">{{ brand }}</option>
+                    :value="brand" class="capitalize">{{ brand.split('-').join(' ') }}</option>
                 </select>
             </div>
+            <div class="filters__block">
+                <span class="filters__label block mb-[10px]">
+                   Цена 
+                </span>
+                <input 
+                v-model="filters.minPrice" 
+                type="number" 
+                class="filters__input" 
+                placeholder="От"
+                id="min_price"
+                name="min_price">
+                <input 
+                v-model="filters.maxPrice" 
+                type="number" 
+                class="filters__input" 
+                placeholder="До"
+                id="max_price"
+                name="max_price">
+            </div>
+            <slot name="button">
+
+            </slot>
         </div>
         <button 
         @click="ProductsStore.closeFilters"
@@ -59,3 +92,36 @@ const ProductsStore = useProductsStore();
     </div>
     
 </template>
+
+<style lang="sass" scoped>
+.filters
+    padding-inline: 20px
+    &__inner
+        display: flex
+        flex-direction: column
+        width: 100%
+        height: 100%
+        justify-content: flex-start
+        align-content: center
+        gap: 20px
+    &__block
+        margin-bottom: 40px
+    &__label, &__input, &__select
+        font-size: 22px
+    &__input
+        display: inline-block
+        width: 100px
+        margin-right: 20px
+        padding: 5px
+        border-bottom: 1px solid #000
+        transition: all .2s
+        &:focus
+            outline: none
+            border-bottom: 5px solid #000
+    &__select
+        background-color: #fff
+        text-transform: capitalize
+
+option
+    text-transform: capitalize
+</style>

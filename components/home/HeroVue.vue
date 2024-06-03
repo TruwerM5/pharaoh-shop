@@ -76,7 +76,7 @@ onMounted(() => {
 <style lang="sass" scoped>
 
 .hero
-    min-height: 250px
+    min-height: 90vh
     position: relative
     &__title
         z-index: 2
@@ -99,7 +99,6 @@ onMounted(() => {
         height: 100%
         object-fit: cover
         object-position: center
-
 .fade-leave-active,
 .fade-enter-active
     transition: all .5s

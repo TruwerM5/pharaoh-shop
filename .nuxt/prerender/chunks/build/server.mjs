@@ -7,7 +7,7 @@ import { createError as createError$1, sanitizeStatusCode } from 'file:///home/k
 import { getActiveHead } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/unhead/dist/index.mjs';
 import { defineHeadPlugin, composableNames } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/@unhead/shared/dist/index.mjs';
 import { RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/vue-router/dist/vue-router.node.mjs';
-import { hasProtocol, joinURL, parseURL, parseQuery, withQuery, isScriptProtocol, withTrailingSlash, withoutTrailingSlash, isSamePath } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/ufo/dist/index.mjs';
+import { withQuery, hasProtocol, parseURL, isScriptProtocol, joinURL, parseQuery, withTrailingSlash, withoutTrailingSlash, isSamePath } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/ufo/dist/index.mjs';
 import { toRouteMatcher, createRouter as createRouter$1 } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/radix3/dist/index.mjs';
 import { defu } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/defu/dist/defu.mjs';
 import { ssrRenderAttrs, ssrRenderList, ssrRenderClass, ssrInterpolate, ssrRenderAttr, ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from 'file:///home/kali/Documents/pharaoh_shop/frontend/node_modules/vue/server-renderer/index.mjs';
@@ -576,6 +576,9 @@ async function getRouteRules(url) {
     return defu({}, ..._routeRulesMatcher.matchAll(url).reverse());
   }
 }
+const __nuxt_page_meta$4 = {
+  middleware: ["categories-middleware"]
+};
 const _routes = [
   {
     name: "about",
@@ -591,15 +594,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./cart-D3emoqHR.mjs').then((m) => m.default || m)
+    component: () => import('./cart-DZi2KjAH.mjs').then((m) => m.default || m)
   },
   {
-    name: "categories-category",
-    path: "/categories/:category()",
-    meta: {},
-    alias: [],
-    redirect: void 0 ,
-    component: () => import('./_category_-qMC81qnn.mjs').then((m) => m.default || m)
+    name: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.name) ?? "categories-category",
+    path: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.path) ?? "/categories/:category()",
+    meta: __nuxt_page_meta$4 || {},
+    alias: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.alias) || [],
+    redirect: __nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.redirect,
+    component: () => import('./_category_-BRhStLXp.mjs').then((m) => m.default || m)
   },
   {
     name: "categoriesw",
@@ -607,7 +610,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./categoriesw-B8tO0GpY.mjs').then((m) => m.default || m)
+    component: () => import('./categoriesw-B_WfMRJB.mjs').then((m) => m.default || m)
   },
   {
     name: "HomePage",
@@ -623,7 +626,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./index-DKQO2MtL.mjs').then((m) => m.default || m)
+    component: () => import('./index-OuEPgArC.mjs').then((m) => m.default || m)
   },
   {
     name: "products-id",
@@ -631,7 +634,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_id_-B0Da_lMf.mjs').then((m) => m.default || m)
+    component: () => import('./_id_-CZ7cEylg.mjs').then((m) => m.default || m)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -740,7 +743,9 @@ const globalMiddleware = [
   validate,
   manifest_45route_45rule
 ];
-const namedMiddleware = {};
+const namedMiddleware = {
+  "categories-middleware": () => import('./categories.middleware-sQ4MqzAA.mjs')
+};
 const plugin$1 = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:router",
   enforce: "pre",
@@ -1985,6 +1990,12 @@ const useNavStore = defineStore("navStore", {
   actions: {
     toggleNav() {
       this.is_opened = !this.is_opened;
+    },
+    closeNav() {
+      this.is_opened = false;
+    },
+    openNav() {
+      this.is_opened = true;
     }
   }
 });
@@ -2002,9 +2013,9 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const isSubMenuOpened = ref(false);
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0$1;
-      _push(`<li${ssrRenderAttrs(mergeProps({ class: "nav-item" }, _attrs))} data-v-f597e403><span class="nav-item__title" data-v-f597e403>${ssrInterpolate(__props.item.title)} <img class="${ssrRenderClass(["nav-item__icon", { "rotated": unref(isSubMenuOpened) }])}"${ssrRenderAttr("src", _imports_0$2)} alt="Open" data-v-f597e403></span><ul class="${ssrRenderClass(["nested-list", { "opened": unref(isSubMenuOpened) }])}" data-v-f597e403><!--[-->`);
+      _push(`<li${ssrRenderAttrs(mergeProps({ class: "nav-item" }, _attrs))} data-v-00d846e1><span class="nav-item__title" data-v-00d846e1>${ssrInterpolate(__props.item.title)} <img class="${ssrRenderClass(["nav-item__icon", { "rotated": unref(isSubMenuOpened) }])}"${ssrRenderAttr("src", _imports_0$2)} alt="Open" data-v-00d846e1></span><ul class="${ssrRenderClass(["nested-list", { "opened": unref(isSubMenuOpened) }])}" data-v-00d846e1><!--[-->`);
       ssrRenderList(__props.item.categories, (category) => {
-        _push(`<li class="nav-item__nested-item" data-v-f597e403>`);
+        _push(`<li class="nav-item__nested-item" data-v-00d846e1>`);
         _push(ssrRenderComponent(_component_NuxtLink, {
           onClick: unref(NavStore).toggleNav,
           to: {
@@ -2035,7 +2046,7 @@ _sfc_main$7.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/navbar/NavbarItemVue.vue");
   return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-f597e403"]]);
+const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-00d846e1"]]);
 const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "NavbarListVue",
   __ssrInlineRender: true,
@@ -2253,16 +2264,17 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0$1;
       const _component_NavbarButtonVue = __nuxt_component_1$1;
-      _push(`<nav${ssrRenderAttrs(mergeProps({ class: "nav" }, _attrs))} data-v-bb0f9d50>`);
+      _push(`<nav${ssrRenderAttrs(mergeProps({ class: "nav" }, _attrs))} data-v-4f769093>`);
       _push(ssrRenderComponent(_component_NuxtLink, {
         to: "/cart",
+        onClick: unref(NavStore).closeNav,
         class: "nav__cart-btn cart-btn"
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img class="nav__cart-icon"${ssrRenderAttr("src", _imports_0$3)} alt="Корзина" data-v-bb0f9d50${_scopeId}>`);
+            _push2(`<img class="nav__cart-icon"${ssrRenderAttr("src", _imports_0$3)} alt="Корзина" data-v-4f769093${_scopeId}>`);
             if (unref(isClient) && unref(cartCount)) {
-              _push2(`<span class="cart__quantity" data-v-bb0f9d50${_scopeId}>${ssrInterpolate(unref(cartCount))}</span>`);
+              _push2(`<span class="cart__quantity" data-v-4f769093${_scopeId}>${ssrInterpolate(unref(cartCount))}</span>`);
             } else {
               _push2(`<!---->`);
             }
@@ -2286,7 +2298,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         onClick: unref(NavStore).toggleNav,
         "is-opened": unref(NavStore).is_opened
       }, null, _parent));
-      _push(`<div class="${ssrRenderClass(["nav__inner", { "opened": unref(NavStore).is_opened }])}" data-v-bb0f9d50>`);
+      _push(`<div class="${ssrRenderClass(["nav__inner", { "opened": unref(NavStore).is_opened }])}" data-v-4f769093>`);
       _push(ssrRenderComponent(NavbarListVue, {
         class: { "opened": unref(NavStore).is_opened },
         "is-opened": unref(NavStore).is_opened
@@ -2301,7 +2313,7 @@ _sfc_main$5.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/navbar/NavbarVue.vue");
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const __nuxt_component_1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-bb0f9d50"]]);
+const __nuxt_component_1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-4f769093"]]);
 const _imports_0$1 = publicAssetsURL("/images/3.png");
 const _sfc_main$4 = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
@@ -2499,6 +2511,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "app",
   __ssrInlineRender: true,
   setup(__props) {
+    ref(false);
     useCartStore();
     return (_ctx, _push, _parent, _attrs) => {
       const _component_Html = Html;
@@ -2711,5 +2724,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { _export_sfc as _, __nuxt_component_0$1 as a, asyncDataDefaults as b, useNuxtApp as c, createError as d, entry$1 as default, useCartStore as e, useRoute as f, useNavStore as g, useRouter as h, defineStore as i, _imports_0$3 as j, useHead as u };
+export { _export_sfc as _, __nuxt_component_0$1 as a, asyncDataDefaults as b, useNuxtApp as c, createError as d, entry$1 as default, useCartStore as e, useRouter as f, useRoute as g, defineStore as h, _imports_0$3 as i, defineNuxtRouteMiddleware as j, navigateTo as n, useHead as u };
 //# sourceMappingURL=server.mjs.map

@@ -1,1 +1,0 @@
-{"version":3,"file":"virtual_public-BtRi2QFo.js","sources":["../../../../virtual:public?%2Fimages%2Fclose-icon.svg"],"sourcesContent":["import { publicAssetsURL } from '#internal/nuxt/paths';export default publicAssetsURL(\"/images/close-icon.svg\")"],"names":[],"mappings":";AAAuD,MAAe,aAAA,gBAAgB,wBAAwB;"}

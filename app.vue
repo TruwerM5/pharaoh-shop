@@ -4,12 +4,16 @@ import FooterVue from './components/FooterVue.vue';
 
 import { useCartStore } from './stores/cart.store';
 
+const isClient = ref(false);
 const CartStore = useCartStore();
 
 if(process.client) {
   CartStore.initCartStorage();
 }
 
+onMounted(() => {
+  isClient.value = true;
+});
 
 </script>
 
@@ -24,8 +28,10 @@ if(process.client) {
 
           
           <HeaderVue />
-            <main class="main h-full">
-                <NuxtPage :transition="{name:'page', mode: 'out-in'}" />
+            <main
+            class="main h-full">
+                <NuxtPage 
+                :transition="{name:'page', mode: 'out-in'}" />
             </main>
         
             
@@ -42,7 +48,7 @@ if(process.client) {
 <style lang="sass">
 .page-enter-active,
 .page-leave-active 
-  transition: all 0.4s
+  transition: all .3s
   position: absolute
 
 .page-enter-from,

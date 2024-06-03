@@ -16,8 +16,9 @@ function remove() {
 </script>
 
 <template>
-    <div :class="['modal-wrapper', {'opened': CartStore.isModalOpened}]">
-        <div class="modal">
+        <div
+        class="modal">
+        <div class="modal__inner">
             <span class="modal__message">
                 Удалить товар из корзины?
             </span>
@@ -36,7 +37,7 @@ function remove() {
                 <img src="/images/close-icon.svg" alt="Закрыть">
             </button>
         </div>
-    </div>
+        </div>
 </template>
 
 <style lang="sass" scoped>
@@ -44,22 +45,30 @@ function remove() {
 .modal-wrapper
     position: fixed
     top: 0
-    left: 100%
+    left: 0
     width: 100%
     height: 100%
     display: grid
     place-items: center
     background-color: rgba(0, 0, 0, 0.5)
-    z-index: -10
-    transition: left .2s ease-in-out
-    &.opened
-        left: 0
-        z-index: 10
+    z-index: 10
+    
 
 .modal
-    position: relative
-    padding: 40px 30px
-    background-color: #fff
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: grid
+    place-items: center
+    background-color: rgba(0, 0, 0, 0.5)
+    z-index: 10
+    overflow: hidden
+    &__inner
+        position: relative
+        padding: 40px 30px
+        background-color: #fff
     &__message
         display: block
         font-size: 18px

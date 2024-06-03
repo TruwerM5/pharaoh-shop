@@ -1,7 +1,7 @@
 
 import type { LocationQuery, LocationQueryValue } from "vue-router";
 import type { Product } from "~/types/product";
-
+import type { Filters } from "~/types/filters";
 export const useProductsStore = defineStore('ProductsStore', {
     state: () => ({
         products: <Product[]>[
@@ -80,7 +80,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                 name: 'Ветровка Carhatt',
                 category: 'jackets',
                 gender: 'male',
-                brand: 'carhatt',
+                brand: 'carhartt',
                 colors: ['Черный'],
                 images: [
                     'carhatt-jacket-1.jpeg',
@@ -132,10 +132,12 @@ export const useProductsStore = defineStore('ProductsStore', {
         closeFilters() {
             this.areFiltersOpened = false;
         },
-        setFilters(category: string | string[], brand?: LocationQueryValue | LocationQueryValue[], gender?: LocationQueryValue | LocationQueryValue[]) {
+        setFilters(category: string | string[], filters: Filters) {
             this.filteredProducts = this.products.filter(product => {
-               return (!brand || product.brand == brand) &&
-                      (!gender || product.gender == gender) &&
+               return (!filters.brand || product.brand == filters.brand) &&
+                      (!filters.gender || product.gender == filters.gender) &&
+                      (!filters.minPrice || product.price >= Number(filters.minPrice)) &&
+                      (!filters.maxPrice || product.price <= Number(filters.maxPrice)) &&
                       product.category == category;
             });
         },
