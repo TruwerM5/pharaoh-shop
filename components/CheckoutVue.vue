@@ -11,7 +11,7 @@ const CartStore = useCartStore();
 <template>
     <div class="checkout modal">
         <button class="checkout__close-btn modal__close-btn" @click="CartStore.closeCheckout">
-            <img src="/images/close-icon.svg" alt="Отмена">
+            <img src="/images/close-icon.svg" alt="Отмена" class="modal__close-icon">
         </button>
         <div class="checkout__inner">
             <form @submit.prevent class="checkout__form form">

@@ -131,4 +131,14 @@ const navbar_list = ref<NavbarList[]>([
     &.opened
         right: 0
         transition-delay: 0s
+    @media screen and (min-width: 1280px)
+        position: relative
+        left: 0
+        flex-direction: row
+        justify-content: flex-start
+        align-items: center
+        gap: 40px
+        margin-left: 50px
+        padding: 0
+        
 </style>

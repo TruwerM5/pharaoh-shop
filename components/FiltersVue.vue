@@ -71,14 +71,18 @@ const ProductsStore = useProductsStore();
                 class="filters__input" 
                 placeholder="От"
                 id="min_price"
-                name="min_price">
+                name="min_price"
+                inputmode="numeric"
+                pattern="[0-9]*">
                 <input 
                 v-model="filters.maxPrice" 
                 type="number" 
                 class="filters__input" 
                 placeholder="До"
                 id="max_price"
-                name="max_price">
+                name="max_price"
+                inputmode="numeric"
+                pattern="[0-9]*">
             </div>
             <slot name="button">
 
@@ -87,7 +91,7 @@ const ProductsStore = useProductsStore();
         <button 
         @click="ProductsStore.closeFilters"
         class="filters__close-btn modal__close-btn">
-            <img src="/images/close-icon.svg" alt="Закрыть" class="filters__close-icon">
+            <img src="/images/close-icon.svg" alt="Закрыть" class="filters__close-icon modal__close-icon">
         </button>
     </div>
     
@@ -101,6 +105,7 @@ const ProductsStore = useProductsStore();
         flex-direction: column
         width: 100%
         height: 100%
+        max-width: 500px
         justify-content: flex-start
         align-content: center
         gap: 20px

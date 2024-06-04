@@ -65,6 +65,8 @@ function moveCarousel(step: number) {
 <style lang="sass" scoped>
 .images-wrapper
     position: relative
+    max-width: 400px
+    margin: 0 auto
     padding-inline: 20px
 .product-images
     position: relative

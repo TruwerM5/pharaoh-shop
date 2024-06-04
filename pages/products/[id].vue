@@ -89,8 +89,7 @@ function addToCart() {
                             {{ color }}
                         </span>
                     </div>
-                </div>
-                <div class="sizes">
+                    <div class="sizes">
                     <template v-if="product.sizes">
                         <button v-for="size,i in product.sizes" :key="i"
                         @click="setSizeIndex(i)"
@@ -103,9 +102,10 @@ function addToCart() {
                     <template v-else>
                         Без размера
                     </template>
-                    
+                    </div>
+                    <AddToCartBtnVue @click="addToCart" class="mt-[20px]"/>
                 </div>
-                <AddToCartBtnVue @click="addToCart" class="mt-[20px]"/>
+                
             </div>
             <div class="product-about px-[30px]">
                 <span class="product-about__title">О товаре</span>
@@ -124,11 +124,22 @@ function addToCart() {
 
 .product-details
     position: relative
+    max-width: 1024px
+    margin: 0 auto
     
 .product-info
     display: flex
     flex-direction: column
     gap: 10px
+    @media screen and (min-width: 1280px)
+        display: grid
+        grid-template-columns: 1fr 1fr
+        column-gap: 40px
+        align-items: center
+    &__bottom
+        @media screen and (min-width: 768px)
+            width: 500px
+            margin: 0 auto
     &__name
         font-size: 20px
     &__price

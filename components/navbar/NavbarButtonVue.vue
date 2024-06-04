@@ -23,6 +23,8 @@ defineProps({
     position: relative
     width: 25px
     height: 20px
+    @media screen and (min-width: 1280px)
+        display: none
     &__icon
         position: absolute
         left: 0

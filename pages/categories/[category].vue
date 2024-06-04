@@ -23,10 +23,7 @@ const filtersQuantity = ref(getFiltersQuantity());
 
 
 onMounted(() => {
-    setTimeout(() => {
-        ProductsStore.isClient = true;
-    }, 400);
-    
+    ProductsStore.isClient = true;
 });
 
 
@@ -89,13 +86,13 @@ function disableFilters() {
 
 <template>
     
-    <div v-show="ProductsStore.isClient"
+    <div v-if="ProductsStore.isClient"
     class="categories page">
         <ScrollVue>
             <template #content>
                     <div class="categories__nav page-nav">
                         <!-- Fix header -->
-                        <h1 class="categories__title page-title">{{ title ? title[1] : ''  }}</h1>
+                        <h1 class="categories__title page-title">{{ $t(route.params.category.toString()) }}</h1>
                         <button 
                         @click="ProductsStore.openFilters"
                         class="categories__filter-btn">
@@ -140,6 +137,9 @@ function disableFilters() {
         display: flex
         justify-content: space-between
         align-items: center
+        max-width: 1280px
+        border-bottom: 2px solid #000
+        margin: 0 auto 30px auto
     &__filter-btn
         position: relative
     &__filter-quantity
@@ -155,7 +155,10 @@ function disableFilters() {
         border-radius: 50%
     &__filter-icon
         width: 22px
-
+        @media screen and (min-width: 768px)
+            width: 28px
+        @media screen and (min-width: 1280px)
+            width: 35px
 .filter-accept-btn
     margin-top: auto
 </style>

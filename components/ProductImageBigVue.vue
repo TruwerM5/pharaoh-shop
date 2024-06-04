@@ -50,7 +50,7 @@ onMounted(() => {
             </div>
             <button @click="ImagesStore.closeGallery"
             class="images-details__close-btn">
-                <img src="/images/close-icon.svg" alt="Закрыть" class="images-details__icon">
+                <img src="/images/close-icon.svg" alt="Закрыть" class="images-details__icon modal__close-icon">
             </button>
         </div>
     </Transition>
@@ -71,6 +71,8 @@ onMounted(() => {
     background-color: #fff
     &__inner
         position: relative
+        max-width: 450px
+        margin: 0 auto
         overflow-x: scroll
         overflow-y: hidden
         scroll-behavior: smooth
@@ -113,5 +115,5 @@ onMounted(() => {
         top: 20px
     &__image
         height: 100%
-        object-fit: cover
+        object-fit: contain
 </style>

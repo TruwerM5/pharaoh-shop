@@ -76,8 +76,12 @@ onMounted(() => {
 <style lang="sass" scoped>
 
 .hero
-    min-height: 90vh
+    min-height: 50vh
     position: relative
+    @media screen and (min-width: 768px)
+        min-height: 70vh
+    @media screen and (min-width: 1280px)
+        min-height: 90vh
     &__title
         z-index: 2
         font-family: Garamond

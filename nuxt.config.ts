@@ -19,7 +19,10 @@ export default defineNuxtConfig({
     pageTransition: {name: 'page', mode: 'out-in'},
     
   },
-  modules: ['@pinia/nuxt'],
+  modules: ['@pinia/nuxt', "@nuxtjs/i18n"],
+  i18n: {
+    vueI18n: './i18n.config.ts'
+  },
   devtools: { enabled: true },  
   css: ['~/assets/sass/style.sass'],
   postcss: {

@@ -44,6 +44,10 @@ onMounted(() => {
     align-items: center
     justify-content: space-between
     z-index: 5
+    @media screen and (min-width: 1280px)
+        flex: 1
+        padding: 0
+        height: 100%
     &__inner
         position: fixed
         top: 75px
@@ -53,6 +57,8 @@ onMounted(() => {
         width: 100%
         height: 100%
         transition: background-color .3s ease-in-out
+        @media screen and (min-width: 1280px)
+            position: static
         &.opened
             left: 0
             background-color: rgba(0, 0, 0, 0.3)
@@ -64,8 +70,12 @@ onMounted(() => {
         display: grid
         place-items: center
         margin-right: 30px
+        @media screen and (min-width: 1280px)
+            width: 75px
+            margin-right: 60px
+            order: 2
     &__cart-icon
-        width: 45px
+        width: 100%
 .cart
     &__quantity
         position: absolute
@@ -79,5 +89,10 @@ onMounted(() => {
         text-align: center
         color: #000
         background-color: #fff
-
+        @media screen and (min-width: 1280px)
+            top: -12px
+            right: 0
+            width: 30px
+            height: 30px
+            font-size: 20px
 </style>
