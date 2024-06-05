@@ -35,9 +35,8 @@ function toggleSubMenu(id: number) {
             <li v-for="category in item.categories" :key="category.id"
             class="nav-item__nested-item">
                 <NuxtLink @click="NavStore.toggleNav"
-                :to="{path:`/categories/${category.category}`,
-                // query: {category: category.category}
-                }">
+                :to="{path:`/categories/${category.category}`}"
+                class="nav-item__link">
                     {{ category.title }}
                 </NuxtLink>
             </li>
@@ -54,19 +53,23 @@ function toggleSubMenu(id: number) {
     overflow: hidden
     cursor: pointer
     @media screen and (min-width: 1280px)
-        position: static
+        position: relative
         overflow: visible
         height: 100%
         display: flex
         align-items: center
         font-size: 26px
         &:hover 
+            &::after
+                width: 100%
             .nested-list
                 visibility: visible
                 opacity: 1
                 transform: rotateX(0)
             .nav-item__icon
                 transform: rotate(180deg)
+    &__link
+        display: block
     &__title
         position: relative
         display: block
@@ -80,6 +83,17 @@ function toggleSubMenu(id: number) {
         font-size: 20px
         @media screen and (min-width: 1280px)
             font-size: 24px
+            &::after
+                content: ''
+                display: block
+                width: 0
+                height: 3px
+                background-color: #fff
+                transition: width .4s
+            &:hover
+                &::after
+                    width: 100%
+                
     &__icon
         position: absolute
         left: 120%
@@ -109,10 +123,10 @@ function toggleSubMenu(id: number) {
         width: 250px
         padding: 25px 20px
         transform-origin: top center
-        transform: rotateX(-90deg)
+        transform: perspective(100px) rotateX(-125deg)
         gap: 22px
         max-height: none
         background-color: #000
         opacity: 0
-        transition: opacity .4s, visibility .4s, transform 1s
+        transition: opacity .4s, visibility .4s, transform .7s
 </style>

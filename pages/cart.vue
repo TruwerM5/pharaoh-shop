@@ -49,6 +49,10 @@ onMounted(() => {
     flex-direction: column
     flex: 1
     min-width: 100%
+    margin-inline: auto
+    @media screen and (min-width: 1024px)
+        min-width: auto
+        width: 700px    
     &__inner
         flex: 1
         display: flex

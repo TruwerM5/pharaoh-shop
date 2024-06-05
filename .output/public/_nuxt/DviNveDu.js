@@ -1,1 +1,0 @@
-import{_ as e,o as c,c as o,M as t,z as n}from"./ecQgoOz_.js";const _={},a={class:"alert"};function r(s,d){return c(),o("div",a,[t(s.$slots,"message",{},void 0)])}const l=e(_,[["render",r],["__scopeId","data-v-6c2ce9df"]]),m=n("/images/close-icon.svg");export{m as _,l as a};

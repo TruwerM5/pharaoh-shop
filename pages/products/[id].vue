@@ -9,6 +9,7 @@ import { useCartStore } from '~/stores/cart.store';
 const ProductStore = useProductsStore();
 const CartStore = useCartStore();
 const route = useRoute();
+const router = useRouter();
 const errorMsg = ref('');
 const currentSizeIndex = ref<number>();
 
@@ -51,6 +52,9 @@ function addToCart() {
     
 }
 
+function goBack() {
+    router.go(-1);
+}
 
 </script>
 
@@ -66,12 +70,12 @@ function addToCart() {
         <div v-else-if="product" class="product-details__inner">
             <ProductImageBigVue
             :images="product.images" />
-            <NuxtLink :to="{path: `/categories/${product.category}`,}"
+            <button @click="goBack"
             class="go-back-btn">
                 <img class="go-back-btn__icon"
                 src="/images/arrow-icon.svg" alt="Назад">
-            </NuxtLink>
-            <div class="product-info px-[30px]">
+            </button>
+            <div class="product-info px-[30px] lg:px-0">
                 <div class="carousel">
                     <ProductImageVue :images="product.images" />
                 </div>
@@ -126,7 +130,8 @@ function addToCart() {
     position: relative
     max-width: 1024px
     margin: 0 auto
-    
+    padding-top: 50px
+        
 .product-info
     display: flex
     flex-direction: column
@@ -138,26 +143,45 @@ function addToCart() {
         align-items: center
     &__bottom
         @media screen and (min-width: 768px)
-            width: 500px
+            width: 400px
             margin: 0 auto
+            display: flex
+            flex-direction: column
+            justify-content: center
+            gap: 15px
+            height: 100%
     &__name
         font-size: 20px
+        @media screen and (min-width: 1280px)
+            font-size: 30px
     &__price
         font-size: 22px
+        @media screen and (min-width: 1280px)
+            font-size: 26px
     &__color
         font-size: 14px
+        @media screen and (min-width: 1280px)
+            font-size: 20px
 .error
     &__text
         font-size: 20px
 
 .go-back-btn
     position: absolute
-    top: 0
+    top: 15px
     right: 30px
     display: inline-block
     padding: 5px
     border: 1px solid #000
-
+    @media screen and (min-width: 1280px)
+        width: 40px
+        height: 40px
+        display: flex
+        justify-content: center
+        align-items: center
+        transition: width .4s ease-in-out
+        &:hover
+            width: 80px
 
 .sizes
     display: flex
@@ -169,6 +193,8 @@ function addToCart() {
     &__text
         font-size: 12px
         text-transform: uppercase
+        @media screen and (min-width: 1280px)
+            font-size: 18px
     &__btn
         padding: 5px
         width: 30px
@@ -181,7 +207,9 @@ function addToCart() {
         &.selected
             color: #fff
             background-color: #000
-
+        @media screen and (min-width: 1280px)
+            width: 35px
+            height: 35px
 .product-about
     margin-block: 35px
     &__title

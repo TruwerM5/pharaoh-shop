@@ -22,9 +22,9 @@ const CartStore = useCartStore();
         </ul>
         <!-- Total cart sum -->
         <span class="cart-list__total-sum flex justify-between items-center mt-[10px] font-semibold">
-           Итого: <span class="ml-auto">{{ CartStore.getTotalSum }}р.</span>
+           Итого: <span class="ml-auto lg:ml-[10px]">{{ CartStore.getTotalSum }}р.</span>
         </span>
-        <span class="cart-list__text block">Цена указана без учета доставки</span>
+        <span class="cart-list__text block lg:text-right">Цена указана без учета доставки</span>
     </div>
 </template>
 
@@ -39,6 +39,8 @@ const CartStore = useCartStore();
         transition: all .5s ease-in-out
     &__total-sum
         font-size: 24px
+        @media screen and (min-width: 1280px)
+            justify-content: flex-end
     &__text
         font-size: 12px
         color: #6e6b65

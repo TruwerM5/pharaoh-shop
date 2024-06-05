@@ -31,7 +31,6 @@ const props = defineProps<{product: Product}>();
 <style lang="sass" scoped>
 .product-item
     position: relative
-    // padding: 5px
     border-radius: 10px
     overflow: hidden
     &__inner
@@ -41,19 +40,31 @@ const props = defineProps<{product: Product}>();
         display: flex
         flex-direction: column
         justify-content: space-between
+        overflow: hidden
+        @media screen and (min-width: 1024px)
+            &:hover 
+                .product-item__price
+                    bottom: 10px
+                .product-item__image
+                    transform: scale(1.4)
     &__link
         position: relative
         display: block
-        height: 100%
+        min-height: 200px
         flex: 1
+        @media screen and (min-width: 1280px)
+            min-height: 300px
+            overflow: hidden
     &__image
         display: block
         border-radius: 10px
         object-position: center
         object-fit: cover
         width: 100%
-        height: 100%
-        min-height: 200px
+        height: 200px
+        @media screen and (min-width: 1280px)
+            height: 300px
+            transition: transform .3s ease-in-out
     &__info
         position: relative
         padding-inline: 10px 
@@ -63,13 +74,11 @@ const props = defineProps<{product: Product}>();
         gap: 3px
         flex: 1
     &__name
-        // display: -webkit-box
-        // -webkit-line-clamp: 1
-        // -webkit-box-orient: vertical
         font-size: 13px
-        // overflow: hidden
-        // text-overflow: ellipsis
-
+        @media screen and (min-width: 1024px)
+            font-size: 17px
+        @media screen and (min-width: 1280px)
+            font-size: 20px
     &__price
         position: absolute
         bottom: 0
@@ -77,4 +86,7 @@ const props = defineProps<{product: Product}>();
         left: 5px
         font-size: 14px
         background-color: #fff
+        @media screen and (min-width: 1024px)
+            font-size: 18px
+            transition: bottom .3s ease-in-out
 </style>

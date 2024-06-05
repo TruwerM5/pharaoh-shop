@@ -84,14 +84,21 @@ function onRemoveClick() {
     position: relative
     padding-block: 5px
     border-bottom: 1px solid #000
+    @media screen and (min-width: 1280px)
+        margin-bottom: 20px
     &__content
         display: grid
         grid-template-columns: 100px 1fr
+        align-items: stretch
         gap: 10px
+        @media screen and (min-width: 1280px)
+            grid-template-columns: 150px 1fr
     &__image
-        height: 100px
+        height: 100%
         width: 100%
         object-fit: contain
+        
+            
     &__info
         display: flex
         flex-direction: column
@@ -100,8 +107,12 @@ function onRemoveClick() {
         align-items: flex-start
     &__name
         font-size: 14px
+        @media screen and (min-width: 1280px)
+            font-size: 20px
     &__size,&__color
         font-size: 12px
+        @media screen and (min-width: 1280px)
+            font-size: 16px
     &__quantity-block
         display: flex
         align-items: center
@@ -109,13 +120,21 @@ function onRemoveClick() {
         margin-top: auto
     &__quantity
         font-size: 20px
+        @media screen and (min-width: 1280px)
+            font-size: 25px
     &__remove-btn
         position: absolute
         top: 5px
         right: 5px
         padding: 3px
+        transition: transform .3s linear
+        &:hover
+            transform: rotate(180deg)
     &__remove-icon
         width: 12px
+        @media screen and (min-width: 1280px)
+            width: 16px
+            height: 16px
     &__btn
         width: 22px
         height: 22px
@@ -123,10 +142,15 @@ function onRemoveClick() {
         justify-content: center
         align-items: center
         border: 1px solid #000
+        @media screen and (min-width: 1280px)
+            width: 30px
+            height: 30px
         &_increment
             background-color: #000
     &__sum
         font-size: 14px
+        @media screen and (min-width: 1280px)
+            font-size: 18px
 .hide-product-enter-active,
 .hide-product-leave-active
     position: relative

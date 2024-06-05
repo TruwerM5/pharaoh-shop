@@ -1,0 +1,1 @@
+import{X as s}from"./gL9OXyPW.js";import{u as a}from"./hEThezMj.js";const e=a(),d=s((r,o)=>{r.query?(e.setFilters(r.params.category,r.query),e.currentProducts=e.filteredProducts):e.currentProducts=e.products.filter(t=>t.category==r.params.category),e.setFilters(r.params.category,r.query)});export{d as default};
