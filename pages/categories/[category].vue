@@ -21,7 +21,6 @@ const filters = ref<Filters>({
 });
 const filtersQuantity = ref(getFiltersQuantity());
 
-
 onMounted(() => {
     ProductsStore.isClient = true;
 });
@@ -87,18 +86,29 @@ function disableFilters() {
 <template>
     
     <div v-if="ProductsStore.isClient"
-    class="categories page">
+    class="categories">
         <ScrollVue>
             <template #content>
                     <div class="categories__nav page-nav">
                         <!-- Fix header -->
                         <h1 class="categories__title page-title">{{ $t(route.params.category.toString()) }}</h1>
+                        <!-- <div class="categories__grid-view ml-auto">
+                            <button @click="setGridView(2)"
+                            :class="['categories__grid-view-btn', {'categories__grid-view-btn_active': currentGridView == 2}]">
+                                <img src="/images/grid-2.svg" alt="By 2" class="categories__grid-view-icon">
+                            </button>
+                            <button @click="setGridView(1)"
+                            :class="['categories__grid-view-btn', {'categories__grid-view-btn_active': currentGridView == 1}]">
+                                <img src="/images/grid-1.svg" alt="By 1" class="categories__grid-view-icon">
+                            </button>
+                        </div> -->
                         <button 
                         @click="ProductsStore.openFilters"
                         class="categories__filter-btn">
+                            <span class="hidden 2xl:block">Фильтры</span>
                             <span v-if="filtersQuantity > 0"
                             class="categories__filter-quantity">
-                                {{ filtersQuantity }}
+                            {{ filtersQuantity }}
                             </span>
                             <img src="/images/filter.svg" alt="Фильтры" class="categories__filter-icon">
                         </button>
@@ -137,11 +147,23 @@ function disableFilters() {
         display: flex
         justify-content: space-between
         align-items: center
-        max-width: 1280px
+        gap: 20px
         border-bottom: 2px solid #000
-        margin: 0 auto 30px auto
+        margin: 0 15px 30px 15px
+    &__grid-view
+        display: flex
+        align-items: center
+        gap: 5px
+    &__grid-view-btn
+        opacity: 0.3
+        &_active
+            opacity: 1
     &__filter-btn
         position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 20px
     &__filter-quantity
         position: absolute
         top: -10px

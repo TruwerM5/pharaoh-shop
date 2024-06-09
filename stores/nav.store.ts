@@ -10,9 +10,15 @@ export const useNavStore = defineStore('navStore', {
             this.is_opened = !this.is_opened;
         },
         closeNav() {
-            this.is_opened = false;
+            if(process.client) {
+                if(window.innerWidth < 1280) {
+                    this.is_opened = false;        
+                } else return;
+            }
+            
         },
         openNav() {
+            
             this.is_opened = true;
         }
     }

@@ -88,9 +88,8 @@ function goBack() {
                     </span>
                     <div class="product-info__colors">
                         <span class="product-info__color">Цвет: </span>
-                        <span v-for="color,i in product.colors" :key="i"
-                        class="product-info__color">
-                            {{ color }}
+                        <span class="product-info__color">
+                            {{ product.color }}
                         </span>
                     </div>
                     <div class="sizes">
@@ -160,6 +159,7 @@ function goBack() {
             font-size: 26px
     &__color
         font-size: 14px
+        text-transform: capitalize
         @media screen and (min-width: 1280px)
             font-size: 20px
 .error

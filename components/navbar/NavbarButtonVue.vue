@@ -1,12 +1,5 @@
 <script setup lang="ts">
 
-defineProps({
-    isOpened: {
-        type: Boolean,
-        required: true,
-    }
-})
-
 </script>
 
 
@@ -14,13 +7,14 @@ defineProps({
 <template>
     <button class="nav-toggle-btn">
         <span v-for="span in 3"
-        :class="[`nav-toggle-btn__icon nav-toggle-btn__icon_${span}`, {'moved': isOpened}]"></span>
+        :class="[`nav-toggle-btn__icon nav-toggle-btn__icon_${span}`]"></span>
     </button>
 </template>
 
 <style lang="sass" scoped>
 .nav-toggle-btn
-    position: relative
+    position: absolute
+    right: 25px
     width: 25px
     height: 20px
     @media screen and (min-width: 1280px)
@@ -36,18 +30,10 @@ defineProps({
         &_1
             top: 0
             transform-origin: top left
-            &.moved
-                transform: rotate(45deg)
         &_2
             top: 50%
             transform: translateY(-50%)
-            &.moved
-                opacity: 0
-                left: -20px
         &_3
             bottom: 0
             transform-origin: bottom left
-            &.moved
-                transform: rotate(-45deg)                
-
 </style>

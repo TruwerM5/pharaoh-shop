@@ -31,8 +31,6 @@ const props = defineProps<{product: Product}>();
 <style lang="sass" scoped>
 .product-item
     position: relative
-    border-radius: 10px
-    overflow: hidden
     &__inner
         position: relative
         max-width: 100%
@@ -46,24 +44,23 @@ const props = defineProps<{product: Product}>();
                 .product-item__price
                     bottom: 10px
                 .product-item__image
-                    transform: scale(1.4)
+                    transform: scale(1.2)
     &__link
         position: relative
         display: block
-        min-height: 200px
+        min-height: 300px
         flex: 1
         @media screen and (min-width: 1280px)
-            min-height: 300px
+            min-height: 450px
             overflow: hidden
     &__image
         display: block
-        border-radius: 10px
         object-position: center
         object-fit: cover
         width: 100%
-        height: 200px
+        height: 300px
         @media screen and (min-width: 1280px)
-            height: 300px
+            height: 450px
             transition: transform .3s ease-in-out
     &__info
         position: relative

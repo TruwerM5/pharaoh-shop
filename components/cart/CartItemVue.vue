@@ -49,7 +49,7 @@ function onRemoveClick() {
                     </span> 
                 </span>
                 <span class="product__color block">Цвет:
-                    <span v-for="color in cartproduct.colors">{{color}}</span>
+                    {{cartproduct.color}}
                 </span>
                 <div class="product__quantity-block">
                     <button @click="decrement"

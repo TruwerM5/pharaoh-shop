@@ -5,7 +5,7 @@ export default defineI18nConfig(() => ({
         ru: {
             tshirts: 'футболки',
             jeans: 'джинсы',
-            sneakers: 'кеды',
+            shoes: 'обувь',
             jackets: 'куртки',
             hoodie: 'худи',
             slates: 'сланцы'

@@ -8,10 +8,10 @@ export const useProductsStore = defineStore('ProductsStore', {
             {
                 id: 1,
                 name: 'Кеды Adidas Superstar',
-                category: 'sneakers',
+                category: 'shoes',
                 gender: 'male',
                 brand: 'adidas',
-                colors: ['белый'],
+                color: 'белый',
                 images: [
                     'adidas-superstar-1.jpeg',
                     'adidas-superstar-2.jpeg',
@@ -25,10 +25,10 @@ export const useProductsStore = defineStore('ProductsStore', {
             },{
                 id: 2,
                 name: 'Кеды Park Lifestyle OG',
-                category: 'sneakers',
+                category: 'shoes',
                 gender: 'male',
                 brand: 'puma',
-                colors: ['белый', 'зеленый'],
+                color: 'белый / зеленый',
                 images: [
                     'puma-1.jpeg',
                     'puma-2.jpeg',
@@ -45,7 +45,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                 category: 'tshirts',
                 gender: 'male',
                 brand: 'new-balance',
-                colors: ['Черный'],
+                color: 'Черный',
                 images: [
                     'newbalance-tshirt.jpeg'
                 ],
@@ -57,7 +57,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                 category: 'tshirts',
                 gender: 'male',
                 brand: 'puma',
-                colors: ['Черный'],
+                color: 'Черный',
                 images: [
                     'puma-tshirt.jpeg'
                 ],
@@ -69,7 +69,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                 category: 'tshirts',
                 gender: 'male',
                 brand: 'the-north-face',
-                colors: ['Белый'],
+                color: 'Белый',
                 images: [
                     'tnf-tshirt.jpeg'
                 ],
@@ -81,7 +81,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                 category: 'jackets',
                 gender: 'male',
                 brand: 'carhartt',
-                colors: ['Черный'],
+                color: 'Черный',
                 images: [
                     'carhatt-jacket-1.jpeg',
                     'carhatt-jacket-2.jpeg',
@@ -96,7 +96,7 @@ export const useProductsStore = defineStore('ProductsStore', {
         translations: [
             ['tshirts', 'футболки'],
             ['jackets', 'куртки'],
-            ['sneakers', 'кеды'],
+            ['shoes', 'кеды'],
             ['slates', 'сланцы'],
             ['jeans', 'джинсы'],
         ],

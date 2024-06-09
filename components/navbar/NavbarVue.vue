@@ -8,38 +8,49 @@ import { useCartStore } from '~/stores/cart.store';
 const NavStore = useNavStore();
 const CartStore = useCartStore();
 const cartCount = computed(() => CartStore.getCartCount);
+const isDesktop = ref(false);
 const isClient = ref(false);
 
 onMounted(() => {
     isClient.value = true;
-})
+    getDeviceWidth();
+    window.addEventListener('resize', (e) => {
+        getDeviceWidth();
+    });
+});
+
+function getDeviceWidth() {
+    if(window.innerWidth >= 1280) {
+        NavStore.is_opened = true;
+    } else {
+        NavStore.is_opened = false;
+    }
+}
 
 </script>
 <template>
     <nav class="nav">
-        <NuxtLink to="/cart"
-        @click="NavStore.closeNav"
-        class="nav__cart-btn cart-btn">
-            <img class="nav__cart-icon"
-            src="/images/cart-icon.svg" alt="Корзина">
-            <span v-if="isClient && cartCount"
-            class="cart__quantity">
-                {{ cartCount }}
-            </span>
-        </NuxtLink>
-        <NavbarButtonVue @click="NavStore.toggleNav"
-        :is-opened="NavStore.is_opened" />
-        <div @click.self="NavStore.toggleNav"
-        :class="['nav__inner', {'opened': NavStore.is_opened}]">
-            <NavbarListVue :class="{'opened': NavStore.is_opened}" :is-opened="NavStore.is_opened" /> 
+        <NavbarButtonVue @click="NavStore.toggleNav" />
+        <Transition name="modal">
+            <div v-if="NavStore.is_opened"
+            :class="['nav__inner', {'opened': NavStore.is_opened}]">
+            <div class="nav__top">
+                <NuxtLink to="/cart">
+                    <img src="/images/cart-icon.svg" alt="Корзина" class="nav__cart-icon">
+                </NuxtLink>
+                <button class="nav__close-btn" @click="NavStore.toggleNav">
+                    <img src="/images/close-icon-white.svg" alt="Закрыть" class="nav__close-icon">
+                </button>
+            </div>
+            <NavbarListVue /> 
         </div>
+        </Transition>
+        
     </nav>
 </template>
 
 <style lang="sass" scoped>
 .nav
-    position: relative
-    padding: 10px
     display: flex
     align-items: center
     justify-content: space-between
@@ -50,32 +61,34 @@ onMounted(() => {
         height: 100%
     &__inner
         position: fixed
-        top: 75px
-        left: 100%
+        left: 0
+        top: 0
         background-color: transparent
         z-index: -10
         width: 100%
         height: 100%
-        transition: background-color .3s ease-in-out
         @media screen and (min-width: 1280px)
             position: static
         &.opened
-            left: 0
-            background-color: rgba(0, 0, 0, 0.3)
+            background-color: #000
             z-index: 4
-            transition-delay: .2s
-    &__cart-btn
-        width: 45px
-        position: relative
-        display: grid
-        place-items: center
-        margin-right: 30px
+    &__top
+        display: flex
+        justify-content: flex-end
+        align-items: center
+        gap: 20px
+        padding: 10px
+        border-bottom: 1px solid #ebebeb
         @media screen and (min-width: 1280px)
-            width: 75px
-            margin-right: 60px
-            order: 2
+            display: none
+    &__close-btn
+        display: block
+    &__close-icon
+        display: block
+        width: 30px
+        margin-left: auto
     &__cart-icon
-        width: 100%
+        width: 35px
 .cart
     &__quantity
         position: absolute

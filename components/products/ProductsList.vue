@@ -18,13 +18,11 @@ const props = defineProps<{products: Product[]}>();
 
 <style lang="sass" scoped>
 .products-list
-    max-width: 1024px
-    margin: 0 auto
     &__inner
         display: grid
         grid-template-columns: 1fr 1fr
-        gap: 20px
+        gap: 10px
         @media screen and (min-width: 768px)
             grid-template-columns: repeat(4, 1fr)
-            gap: 40px
+            margin-inline: 24px
 </style>

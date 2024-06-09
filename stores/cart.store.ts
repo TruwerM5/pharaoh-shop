@@ -23,7 +23,7 @@ export const useCartStore = defineStore('CartStore', {
                 this.cart.push({
                     id: product.id,
                     name: product.name,
-                    colors: product.colors,
+                    color: product.color,
                     size,
                     quantity: 1,
                     images: product.images,
