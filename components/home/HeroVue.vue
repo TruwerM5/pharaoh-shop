@@ -76,7 +76,8 @@ onMounted(() => {
 <style lang="sass" scoped>
 
 .hero
-    min-height: 50vh
+    min-height: 70vh
+
     position: relative
     @media screen and (min-width: 768px)
         min-height: 70vh

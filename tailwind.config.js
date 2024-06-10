@@ -10,6 +10,9 @@ export default {
   ],
   
   theme: {
+    fontFamily: {
+      'Garamond': ['Garamond']
+    },
     extend: {},
   },
   plugins: [],

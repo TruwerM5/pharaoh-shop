@@ -49,7 +49,6 @@ onMounted(() => {
 .page-enter-active,
 .page-leave-active 
   transition: all .3s
-  position: absolute
 
 .page-enter-from,
 .page-leave-to

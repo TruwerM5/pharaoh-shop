@@ -27,6 +27,12 @@ const brands_1 = ref<{id: number; image: string}[]>([
     },{
         id: 8,
         image: 'zara',
+    },{
+        id: 9,
+        image: 'ray-ban',
+    },{
+        id: 10,
+        image: 'calvin-klein',
     }
 ]);
 
@@ -49,7 +55,16 @@ const brands_2 = ref<{id: number; image: string;}[]>([
     },{
     id: 7,
     image: 'levis',
-    },
+    },{
+    id: 8,
+    image: 'thenorthface',
+    },{
+    id: 9,
+    image: 'tommy-hilfiger',
+    },{
+    id: 10,
+    image: 'balenciaga',
+    }
 ])
 
 </script>

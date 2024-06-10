@@ -19,22 +19,23 @@ defineProps<{list: {id: number; image: string}[]; reverse?: boolean;}>();
 <style lang="sass" scoped>
 
 .brand-list
-    margin-block: 20px
-    padding-inline: 20px
     position: relative
+    min-width: 200%
     display: flex
     justify-content: space-between
     align-items: center
     gap: 20px
-    width: fit-content
+    margin-block: 20px
+    padding-inline: 20px
+    // transform: translateX(-50%)
     animation: slide 20s infinite alternate linear
     &.reverse
         animation: slidereverse 20s infinite alternate linear
 .brand-item
     display: flex
     position: relative
-    min-width: 25%
-    
+    flex: 1
+    max-width: 150px
     &__image
         display: block
     
@@ -43,12 +44,12 @@ defineProps<{list: {id: number; image: string}[]; reverse?: boolean;}>();
     0%
         transform: translateX(0)
     100%
-        transform: translateX(calc( -100% - 25px ))
+        transform: translateX(-50%)
 
 @keyframes slidereverse
     0%
-        transform: translateX(-100%)
+        transform: translateX(-50%)
     100%
-        transform: translateX(calc(0% + 25px ))
+        transform: translateX(0)
     
 </style>
