@@ -103,7 +103,7 @@ const NavStore = useNavStore();
 //         }]
 //     }
 // ]);
-const navbar_list = ref<any>([
+const navbar_list = ref<NavbarList[]>([
         {
             id: 1,
             title: 'Футболки',
@@ -148,9 +148,6 @@ const navbar_list = ref<any>([
 
 <style lang="sass" scoped>
 .nav-list
-    // position: absolute
-    // left: 0
-    // top: 0
     width: 100%
     height: 100%
     display: flex

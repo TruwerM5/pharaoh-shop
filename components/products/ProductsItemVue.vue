@@ -7,7 +7,7 @@ const props = defineProps<{product: Product}>();
 </script>
 
 <template>
-    <li class="product-item">
+        <li class="product-item">
         <fieldset class="product-item__inner">
             <NuxtLink :to="{path: `/products/${product.id}`}" class="product-item__link">
                 <img :src="`/images/${product.images[0]}`" 
@@ -26,6 +26,7 @@ const props = defineProps<{product: Product}>();
             </figcaption>
         </fieldset>
     </li>
+    
 </template>
 
 <style lang="sass" scoped>
@@ -44,24 +45,21 @@ const props = defineProps<{product: Product}>();
                 .product-item__price
                     bottom: 10px
                 .product-item__image
-                    transform: scale(1.2)
+                    opacity: 0.7
     &__link
         position: relative
         display: block
-        min-height: 300px
-        flex: 1
-        @media screen and (min-width: 1280px)
-            min-height: 450px
-            overflow: hidden
+        height: 100%
+        // @media screen and (min-width: 1280px)
+        //     overflow: hidden
     &__image
         display: block
         object-position: center
         object-fit: cover
         width: 100%
-        height: 300px
+        height: 100%
         @media screen and (min-width: 1280px)
-            height: 450px
-            transition: transform .3s ease-in-out
+            transition: opacity .3s ease-in-out
     &__info
         position: relative
         padding-inline: 10px 

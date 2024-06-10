@@ -31,7 +31,6 @@ body
 
 .main
     position: relative
-    margin-top: 52px
     flex: 1
     display: flex
     flex-direction: column
@@ -105,6 +104,8 @@ img
     z-index: 10
     background-color: #fff
     overflow-y: scroll
+    &::-webkit-scrollbar
+        display: none
     &__close-btn
         position: absolute
         top: 30px

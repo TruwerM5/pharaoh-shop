@@ -29,7 +29,7 @@ const banners = ref<{id: number; image: string;}[]>([
     image: 'new-balance-banner2.jpg'
     },{
     id: 9,
-    image: 'tnf-banner.jpg'
+    image: 'tnf-banner3.jpg'
     },{
     id: 10,
     image: 'tnf-banner2.jpg'
@@ -52,7 +52,7 @@ function move() {
 
 
 onMounted(() => {
-    setInterval(move, 1200);
+    setInterval(move, 6000);
 });
 </script>
 
@@ -105,7 +105,7 @@ onMounted(() => {
         object-position: center
 .fade-leave-active,
 .fade-enter-active
-    transition: all .5s
+    transition: all .2s
 
 .fade-enter-from,
 .fade-leave-to

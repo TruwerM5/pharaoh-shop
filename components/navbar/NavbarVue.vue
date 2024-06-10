@@ -35,7 +35,7 @@ function getDeviceWidth() {
             <div v-if="NavStore.is_opened"
             :class="['nav__inner', {'opened': NavStore.is_opened}]">
             <div class="nav__top">
-                <NuxtLink to="/cart">
+                <NuxtLink to="/cart" @click="NavStore.closeNav">
                     <img src="/images/cart-icon.svg" alt="Корзина" class="nav__cart-icon">
                 </NuxtLink>
                 <button class="nav__close-btn" @click="NavStore.toggleNav">

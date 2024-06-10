@@ -20,9 +20,14 @@ const filters = ref<Filters>({
     maxPrice: route.query.maxPrice || null,
 });
 const filtersQuantity = ref(getFiltersQuantity());
+const currentGridView = ref<number>(2);
 
 onMounted(() => {
     ProductsStore.isClient = true;
+    checkWindowWidth();
+    window.addEventListener('resize', () => {
+        checkWindowWidth();
+    });
 });
 
 
@@ -81,6 +86,20 @@ function disableFilters() {
     navigateTo({query: {}});
 }
 
+function setGridView(grid: number) {
+    currentGridView.value = grid;
+}
+
+
+function checkWindowWidth() {
+    if(window.innerWidth >= 768) {
+        currentGridView.value = 4;
+    } else {
+        currentGridView.value = 2;
+    }
+    return;
+}
+
 </script>
 
 <template>
@@ -92,16 +111,32 @@ function disableFilters() {
                     <div class="categories__nav page-nav">
                         <!-- Fix header -->
                         <h1 class="categories__title page-title">{{ $t(route.params.category.toString()) }}</h1>
-                        <!-- <div class="categories__grid-view ml-auto">
+                        <div v-if="currentGridView <= 3"
+                        class="categories__grid-view ml-auto">
+                            <button @click="setGridView(3)"
+                            :class="['categories__grid-view-btn', {'categories__grid-view-btn_active': currentGridView == 3}]">
+                                <img src="/images/grid-6.svg" alt="By 6" class="categories__grid-view-icon">
+                            </button>
                             <button @click="setGridView(2)"
                             :class="['categories__grid-view-btn', {'categories__grid-view-btn_active': currentGridView == 2}]">
-                                <img src="/images/grid-2.svg" alt="By 2" class="categories__grid-view-icon">
+                                <img src="/images/grid-4.svg" alt="By 2" class="categories__grid-view-icon">
                             </button>
                             <button @click="setGridView(1)"
                             :class="['categories__grid-view-btn', {'categories__grid-view-btn_active': currentGridView == 1}]">
                                 <img src="/images/grid-1.svg" alt="By 1" class="categories__grid-view-icon">
                             </button>
-                        </div> -->
+                        </div>
+                        <div v-else
+                        class="categories__grid-view ml-auto">
+                        <button @click="setGridView(4)"
+                            :class="['categories__grid-view-btn', {'categories__grid-view-btn_active': currentGridView == 4}]">
+                                <img src="/images/grid-4.svg" alt="By 4" class="categories__grid-view-icon">
+                            </button>
+                            <button @click="setGridView(6)"
+                            :class="['categories__grid-view-btn', {'categories__grid-view-btn_active': currentGridView == 6}]">
+                                <img src="/images/grid-6.svg" alt="By 6" class="categories__grid-view-icon">
+                            </button>
+                        </div>
                         <button 
                         @click="ProductsStore.openFilters"
                         class="categories__filter-btn">
@@ -114,7 +149,7 @@ function disableFilters() {
                         </button>
                     </div>
                     <template v-if="ProductsStore.currentProducts.length > 0">
-                        <ProductsList :products="ProductsStore.currentProducts" />
+                        <ProductsList :products="ProductsStore.currentProducts" :grid="currentGridView" />
                     </template>
                     <template v-else>
                         <AlertVue >
@@ -143,6 +178,7 @@ function disableFilters() {
 
 <style lang="sass" scoped>
 .categories
+    margin-block: 30px 40px
     &__nav
         display: flex
         justify-content: space-between
@@ -153,11 +189,14 @@ function disableFilters() {
     &__grid-view
         display: flex
         align-items: center
-        gap: 5px
+        gap: 10px
     &__grid-view-btn
         opacity: 0.3
         &_active
             opacity: 1
+    &__grid-view-icon
+        @media screen and (max-width: 1024px)
+            width: 20px
     &__filter-btn
         position: relative
         display: flex
@@ -176,11 +215,9 @@ function disableFilters() {
         background-color: #000
         border-radius: 50%
     &__filter-icon
-        width: 22px
+        width: 16px
         @media screen and (min-width: 768px)
-            width: 28px
-        @media screen and (min-width: 1280px)
-            width: 35px
+            width: 22px
 .filter-accept-btn
     margin-top: auto
 </style>

@@ -2,6 +2,7 @@
 interface _GlobalComponents {
       'AddToCartBtnVue': typeof import("../components/AddToCartBtnVue.vue")['default']
     'AlertVue': typeof import("../components/AlertVue.vue")['default']
+    'CarouselVue': typeof import("../components/CarouselVue.vue")['default']
     'CheckoutVue': typeof import("../components/CheckoutVue.vue")['default']
     'FiltersVue': typeof import("../components/FiltersVue.vue")['default']
     'FooterVue': typeof import("../components/FooterVue.vue")['default']
@@ -45,6 +46,7 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
       'LazyAddToCartBtnVue': typeof import("../components/AddToCartBtnVue.vue")['default']
     'LazyAlertVue': typeof import("../components/AlertVue.vue")['default']
+    'LazyCarouselVue': typeof import("../components/CarouselVue.vue")['default']
     'LazyCheckoutVue': typeof import("../components/CheckoutVue.vue")['default']
     'LazyFiltersVue': typeof import("../components/FiltersVue.vue")['default']
     'LazyFooterVue': typeof import("../components/FooterVue.vue")['default']
@@ -102,6 +104,7 @@ declare module 'vue' {
 
 export const AddToCartBtnVue: typeof import("../components/AddToCartBtnVue.vue")['default']
 export const AlertVue: typeof import("../components/AlertVue.vue")['default']
+export const CarouselVue: typeof import("../components/CarouselVue.vue")['default']
 export const CheckoutVue: typeof import("../components/CheckoutVue.vue")['default']
 export const FiltersVue: typeof import("../components/FiltersVue.vue")['default']
 export const FooterVue: typeof import("../components/FooterVue.vue")['default']
@@ -145,6 +148,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyAddToCartBtnVue: typeof import("../components/AddToCartBtnVue.vue")['default']
 export const LazyAlertVue: typeof import("../components/AlertVue.vue")['default']
+export const LazyCarouselVue: typeof import("../components/CarouselVue.vue")['default']
 export const LazyCheckoutVue: typeof import("../components/CheckoutVue.vue")['default']
 export const LazyFiltersVue: typeof import("../components/FiltersVue.vue")['default']
 export const LazyFooterVue: typeof import("../components/FooterVue.vue")['default']

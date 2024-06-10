@@ -3,8 +3,7 @@
 export interface NavbarList {
     id: number;
     title: string;
-    type: string;
-    categories: Category[],
+    path: string;
 }
 
 export interface Category {

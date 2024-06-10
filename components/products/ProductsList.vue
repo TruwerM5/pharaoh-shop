@@ -3,15 +3,33 @@
 import type { Product } from '~/types/product';
 import { useNavStore } from '#imports';
 
-const props = defineProps<{products: Product[]}>();
+const props = defineProps<{products: Product[], grid: number;}>();
+const container = ref<Product[]>([]);
+const currentIndex = ref<number>(0);
+
+function addNextItem() {
+    container.value.push(props.products[currentIndex.value]);
+    currentIndex.value++;
+}   
+
+const timeId = setInterval(() => {
+    if(currentIndex.value < props.products.length) {
+        addNextItem();
+    } else {
+        clearInterval(timeId);
+    }
+}, 300);
 
 </script>
 
 <template>
     <div class="products-list">
         <ul
-        class="products-list__inner">
-            <ProductsItemVue v-for="item in products" :key="item.id" :product="item" />
+        class="products-list__inner" :style="{gridTemplateColumns: `repeat(${grid}, 1fr)`}">
+        <TransitionGroup name="products">
+            <ProductsItemVue v-for="item in container" :key="item.id" :product="item" />
+        </TransitionGroup>
+            
         </ul>
     </div>
 </template>
@@ -25,4 +43,13 @@ const props = defineProps<{products: Product[]}>();
         @media screen and (min-width: 768px)
             grid-template-columns: repeat(4, 1fr)
             margin-inline: 24px
+
+
+.products-enter-active,
+.products-leave-active
+    transition: all .6s
+
+.products-enter-from
+    opacity: 0
+    transform: translateY(30px)
 </style>
