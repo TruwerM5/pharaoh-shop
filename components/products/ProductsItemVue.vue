@@ -69,7 +69,7 @@ const props = defineProps<{product: Product}>();
         gap: 3px
         flex: 1
     &__name
-        font-size: 13px
+        font-size: 14px
         @media screen and (min-width: 1024px)
             font-size: 17px
         @media screen and (min-width: 1280px)

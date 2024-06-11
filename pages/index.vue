@@ -13,9 +13,9 @@ onMounted(() => {
 
 
 <template>
-    <div class="home-page" v-if="isClient">
-        <HeroVue v-if="isClient" />        
-        <HomeBrandsVue />
-        <AboutVue v-if="isClient" />
+    <div class="home-page">
+        <HeroVue/>        
+        <HomeBrandsVue/>
+        <AboutVue v-if="isClient"/>
     </div>
 </template>

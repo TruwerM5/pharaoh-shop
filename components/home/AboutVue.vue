@@ -1,26 +1,55 @@
 <script setup lang="ts">
+
+const text = 'Добро пожаловать в PHARAOH SHOP – ваш идеальный модный гид! Мы рады приветствовать вас в нашем интернет-магазине, где стиль и качество встречаются в каждом изделии.'
+const container = ref<string[]>([]);
+const start = ref(0);
+const end = ref(1);
+const observerTarget = ref(null);
+function animateText() {
+    console.log("Animation is started");
+    const timerId = setInterval(() => {
+        container.value.push(text.slice(start.value, end.value));
+        start.value++;
+        end.value++;
+        
+        if(start.value >= text.length) {
+            clearInterval(timerId);
+        }
+        
+    }, 100);
+}
+
+onMounted(() => {
+    if(observerTarget.value) {
+        animateText();
+    }
+  
+});
 </script>
 
-<template>
-    <ScrollVue>
+<template >
+    <div ref="observerTarget">
+        <ScrollVue>
         <template #content>
             <div class="about">
                 <div class="about__inner">
+                    <p class="about__text about__text_hidden">
+                        {{ text }}
+                    </p>
                     <div class="about__block">
-                        <p class="about__text">
-                            Добро пожаловать в 
-                            <span class="font-[Garamond] uppercase">Pharaoh shop</span>
-                            – ваш идеальный модный гид!
-                        </p>
-                        <p class="about__text">
-                            Мы рады приветствовать вас в нашем интернет-магазине, 
-                            где стиль и качество встречаются в каждом изделии.
-                        </p>
+                        <TransitionGroup name="text">
+                            <span v-for="letter,i in container" :key="i"
+                            class="about__text">
+                                {{ letter }}
+                            </span>
+                        </TransitionGroup>
                     </div>
                 </div>
             </div>
         </template>
     </ScrollVue>
+    </div>
+    
     
 
 </template>
@@ -28,10 +57,29 @@
 <style lang="sass" scoped>
 .about
     padding: 15px 25px
-    max-width: 500px
-    margin: 0 auto
+    display: grid
+    background-color: #000
+    color:  #fff
+    &__inner
+        max-width: 600px
+        position: relative
+    &__block
+        position: absolute
+        top: 0
+        left: 0
     &__text
-        font-size: 22px
+        position: relative
+        font-size: 24px
         font-family: Garamond
-        text-align: justify
+        text-align: left
+        &_hidden
+            position: static
+            color: #000
+
+.text-move,
+.text-enter-active,
+.text-leave-active
+    transition: all .4s
+.text-enter-from
+    opacity: 0
 </style>

@@ -6,32 +6,28 @@ const isActive = ref(false);
 const container = ref<any>();
 const windowHeight = ref(0);
 onMounted(() => {
-
-    window.addEventListener('scroll', handleScroll);
-    // nextTick(() => {
-        handleScroll();
-    // })
+    window.addEventListener('scroll', handleScroll);    
+    handleScroll();
     windowHeight.value = window.innerHeight;
-    console.log(windowHeight.value);
-    console.log(window.scrollY);
-   
 });
 
 function handleScroll() {
     if((container.value && 
-       container.value.getBoundingClientRect().top > 0 && 
-       container.value.getBoundingClientRect().top < windowHeight.value / 1.3)
+       container.value.getBoundingClientRect().top < windowHeight.value / 3)
       ) {
         isActive.value = true;
-        console.log(container.value.getBoundingClientRect().top)
-    }
+    } 
 }
+
+onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
-        <div :class="['scroll-wrapper', isActive ? 'max-h-screen' : 'max-h-0']" ref="container">
+        <div :class="['scroll-wrapper', isActive ? 'max-h-[3000px]' : 'max-h-[50px]']" ref="container">
             <Transition name="scroll">
-                <div v-show="isActive"
+                <div v-if="isActive"
                 class="scroll-block h-full">
                     <slot name="content">
                         

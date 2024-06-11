@@ -21,7 +21,8 @@ defineProps<{list: {id: number; image: string}[]; reverse?: boolean;}>();
 .brand-list
     position: relative
     min-width: 200%
-    display: flex
+    display: grid
+    grid-template-columns: repeat(10, 1fr)
     justify-content: space-between
     align-items: center
     gap: 20px
