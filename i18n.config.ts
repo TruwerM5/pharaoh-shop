@@ -8,7 +8,10 @@ export default defineI18nConfig(() => ({
             shoes: 'обувь',
             jackets: 'куртки',
             hoodie: 'худи',
-            slates: 'сланцы'
+            slates: 'сланцы',
+            accessories: 'аксессуары',
+            summer: 'Летняя коллекция',
+            autumn: 'Осення коллекция'
         }
     }
 }))

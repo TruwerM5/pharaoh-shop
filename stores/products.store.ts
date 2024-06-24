@@ -1,5 +1,5 @@
 
-import type { LocationQuery, LocationQueryValue } from "vue-router";
+import type { LocationQuery, LocationQueryRaw, LocationQueryValue } from "vue-router";
 import type { Product } from "~/types/product";
 import type { Filters } from "~/types/filters";
 export const useProductsStore = defineStore('ProductsStore', {
@@ -21,6 +21,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                     'adidas-superstar-6.jpeg',
                 ],
                 price: 4290,
+                season: 'summer',
                 sizes: ['39','40','41','42','43','44', '45']
             },{
                 id: 2,
@@ -38,6 +39,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                     'puma-6.jpeg',
                 ],
                 price: 5400,
+                season: 'summer',
                 sizes: ['39','40','41','42','43','44','45']
             },{
                 id: 3,
@@ -50,6 +52,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                     'newbalance-tshirt.jpeg'
                 ],
                 price: 1700,
+                season: 'summer',
                 sizes: ['xs','s','m','l','xl']
             },{
                 id: 4,
@@ -62,6 +65,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                     'puma-tshirt.jpeg'
                 ],
                 price: 1650,
+                season: 'summer',
                 sizes: ['xs','s','m','l','xl']
             },{
                 id: 5,
@@ -74,6 +78,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                     'tnf-tshirt.jpeg'
                 ],
                 price: 1750,
+                season: 'summer',
                 sizes: ['xs','s','m','l','xl']
             },{
                 id: 6,
@@ -90,6 +95,7 @@ export const useProductsStore = defineStore('ProductsStore', {
                     'carhatt-jacket-5.jpeg'
                 ],
                 price: 3800,
+                season: 'autumn',
                 sizes: ['xs','s','m','l','xl']
             }
         ],
@@ -104,6 +110,14 @@ export const useProductsStore = defineStore('ProductsStore', {
         
         filteredProducts: <Product[]>[],
         currentProducts: <Product[]>[],
+        currentGridView: 2,
+        filters: <Filters>{
+            gender: "",
+            brand: "",
+            minPrice: "",
+            maxPrice: "",
+        },
+        filterParam: <string | string[]> "",
         isClient: false,
     }),
     actions: {
@@ -126,23 +140,81 @@ export const useProductsStore = defineStore('ProductsStore', {
                 }
             });
         },
+        filterBySeason(season: string | string[]) {
+            return this.products.filter(item => item.season == season);
+        },
         openFilters() {
             this.areFiltersOpened = true;
         },
         closeFilters() {
             this.areFiltersOpened = false;
         },
-        setFilters(category: string | string[], filters: Filters) {
-            this.filteredProducts = this.products.filter(product => {
-               return (!filters.brand || product.brand == filters.brand) &&
-                      (!filters.gender || product.gender == filters.gender) &&
-                      (!filters.minPrice || product.price >= Number(filters.minPrice)) &&
-                      (!filters.maxPrice || product.price <= Number(filters.maxPrice)) &&
-                      product.category == category;
+        setFilters() {
+            console.log(this.filters);
+            this.currentProducts = this.products.filter(product => {
+               return (!this.filters.brand || product.brand == this.filters.brand) &&
+                      (!this.filters.gender || product.gender == this.filters.gender) &&
+                      (!this.filters.minPrice || product.price >= Number(this.filters.minPrice)) &&
+                      (!this.filters.maxPrice || product.price <= Number(this.filters.maxPrice)) &&
+                      (product.category == this.filterParam || product.season == this.filterParam);
             });
+            console.log(this.currentProducts);
         },
         setCurrentProducts(instance: Product[]) {
             this.currentProducts = instance;
+        },
+        initFilters({gender, brand, minPrice, maxPrice}:Filters) {
+            if(gender) {
+                this.filters.gender = gender;
+            }
+            if(brand) {
+                this.filters.brand = brand;
+            }
+            if(minPrice) {
+                this.filters.minPrice = minPrice;
+            }
+            if(maxPrice) {
+                this.filters.maxPrice = maxPrice;
+            }
+            
+        },
+        setGridView(grid: number) {
+            this.currentGridView = grid;
+        },
+        checkWindowWidth() {
+            if(window && window.innerWidth >= 768) {
+                this.setGridView(4);
+            } else {
+                this.setGridView(2);
+            }
+        },
+        removeFilters() {
+            this.filters = {};
+            this.closeFilters();
+        },
+        applyFilters() {
+            let query: LocationQueryRaw = { };
+            if(this.filters.brand) {
+                query.brand = this.filters.brand;
+            }
+            if(this.filters.gender) {
+                query.gender = this.filters.gender;
+            }
+            if(this.filters.minPrice) {
+                query.minPrice = this.filters.minPrice;
+            }
+            if(this.filters.maxPrice) {
+                query.maxPrice = this.filters.maxPrice;
+            }
+
+            if(query.minPrice && query.maxPrice) {
+                if(query.minPrice > query.maxPrice) {
+                    query.minPrice = null;
+                    query.maxPrice = null;
+                }
+            }
+
+            return query;
         }
     }
 })

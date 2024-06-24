@@ -1,20 +1,13 @@
 <script setup lang="ts">
-
-
-
 const isActive = ref(false);
 const container = ref<any>();
-const windowHeight = ref(0);
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);    
     handleScroll();
-    windowHeight.value = window.innerHeight;
 });
 
 function handleScroll() {
-    if((container.value && 
-       container.value.getBoundingClientRect().top < windowHeight.value / 3)
-      ) {
+    if((container.value && container.value.getBoundingClientRect().top < window.innerHeight / 1.5)) {
         isActive.value = true;
     } 
 }
@@ -25,7 +18,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-        <div :class="['scroll-wrapper', isActive ? 'max-h-[3000px]' : 'max-h-[50px]']" ref="container">
+        <div :class="['scroll-wrapper', isActive ? 'max-h-[3000px]' : 'auto']" ref="container"
+        :style="{minHeight: isActive ? 'auto' : '300px'}">
             <Transition name="scroll">
                 <div v-if="isActive"
                 class="scroll-block h-full">

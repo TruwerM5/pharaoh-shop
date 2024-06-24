@@ -32,38 +32,41 @@ const brands_1 = ref<{id: number; image: string}[]>([
         image: 'ray-ban',
     },{
         id: 10,
-        image: 'calvin-klein',
+        image: 'armani',
     }
 ]);
 
 const brands_2 = ref<{id: number; image: string;}[]>([
     {
-    id: 2,
-    image: 'burberry',
+        id: 1,
+        image: 'armani-exchange',
     },{
-    id: 3,
-    image: 'armani',
+        id: 2,
+        image: 'burberry',
     },{
-    id: 4,
-    image: 'chanel',
+        id: 3,
+        image: 'calvin-klein',
     },{
-    id: 5,
-    image: 'casio',
+        id: 4,
+        image: 'chanel',
     },{
-    id: 6,
-    image: 'adidas-originals',
+        id: 5,
+        image: 'casio',
     },{
-    id: 7,
-    image: 'levis',
+        id: 6,
+        image: 'adidas-originals',
     },{
-    id: 8,
-    image: 'thenorthface',
+        id: 7,
+        image: 'levis',
     },{
-    id: 9,
-    image: 'tommy-hilfiger',
+        id: 8,
+        image: 'thenorthface',
     },{
-    id: 10,
-    image: 'balenciaga',
+        id: 9,
+        image: 'tommy-hilfiger',
+    },{
+        id: 10,
+        image: 'balenciaga',
     }
 ])
 

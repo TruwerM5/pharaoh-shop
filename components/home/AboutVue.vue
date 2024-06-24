@@ -20,15 +20,14 @@ function animateText() {
 }
 
 onMounted(() => {
-    if(observerTarget.value) {
-        animateText();
-    }
+    
+    animateText();
   
 });
 </script>
 
 <template >
-    <div ref="observerTarget">
+    <div>
         <ScrollVue>
         <template #content>
             <div class="about">
@@ -63,6 +62,7 @@ onMounted(() => {
     &__inner
         max-width: 600px
         position: relative
+        margin: 0 auto
     &__block
         position: absolute
         top: 0

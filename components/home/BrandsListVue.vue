@@ -28,10 +28,14 @@ defineProps<{list: {id: number; image: string}[]; reverse?: boolean;}>();
     gap: 20px
     margin-block: 20px
     padding-inline: 20px
-    // transform: translateX(-50%)
     animation: slide 20s infinite alternate linear
     &.reverse
         animation: slidereverse 20s infinite alternate linear
+    @media screen and (min-width: 1280px)
+        min-width: 100%
+        animation: none
+        &.reverse
+            animation: none
 .brand-item
     display: flex
     position: relative

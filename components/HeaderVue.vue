@@ -23,8 +23,9 @@ const NavStore = useNavStore();
         
           <div class="header__logo-wrapper">
             <NuxtLink to="/" class="header__logo-link">
-                <img src="/images/logo.svg" alt="Logo" class="header__logo-img">
-                 Pharaoh shop
+                <!-- <img src="/images/logo.svg" alt="Logo" class="header__logo-img">
+                 Pharaoh shop -->
+                <img src="/images/logo-2.png" alt="Logo" class="logo">
             </NuxtLink>
           </div>  
           <NavbarVue />
@@ -63,11 +64,11 @@ const NavStore = useNavStore();
             justify-content: center
             align-items: center
             font-size: 16px
-    &__logo-img
-        display: none
-        @media screen and (min-width: 1280px)
-            display: block
-            width: 80px
+    // &__logo-img
+    //     display: none
+    //     @media screen and (min-width: 1280px)
+    //         display: block
+    //         width: 80px
     &__top
         padding-inline: 30px
         width: 100%
@@ -77,5 +78,9 @@ const NavStore = useNavStore();
     &__cart-icon
         width: 40px
         
-
+.logo
+    max-width: 80px
+    @media screen and (min-width: 1280px)
+        max-width: 100px
+        margin-bottom: 10px
 </style>

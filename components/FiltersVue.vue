@@ -5,6 +5,8 @@ import { useProductsStore } from '#imports';
 import type { Filters } from '~/types/filters';
 
 defineProps<{filters: Filters}>();
+const route = useRoute();
+const router = useRouter();
 
 const brandsList = ref<string[]>([
     'adidas', 
@@ -30,7 +32,24 @@ const gendersList = ref<{gender: string; title: string}[]>([
 ])
 const ProductsStore = useProductsStore();
 
+function acceptFilters() {
 
+    router.push({query: ProductsStore.applyFilters()});
+    //Добавляем запрос в строку браузера
+    // router.push({ query: ProductsStore.applyFilters() });
+    //Применяем фильтры
+    ProductsStore.setFilters();
+    //Закрываем модальное окно
+    ProductsStore.closeFilters();
+    //Обновляем счетчик применных фильтров
+    // filtersQuantity.value = getFiltersQuantity();
+
+}
+
+function disableFilters() {
+    ProductsStore.removeFilters();
+    navigateTo({query: {}});
+}
 //price gender color brand
 
 </script>
@@ -41,7 +60,7 @@ const ProductsStore = useProductsStore();
                 <span class="filters__label">
                     Пол: 
                 </span>
-                <select v-model="filters.gender" placeholder="Не выбрано"
+                <select v-model="ProductsStore.filters.gender" placeholder="Не выбрано"
                     name="gender" id="gender" class="filters__select">
                     <option value="" selected placeholder="Не выбрано">Не выбрано</option>
                     <option v-for="gender,i in gendersList" :key="i"
@@ -54,7 +73,7 @@ const ProductsStore = useProductsStore();
                 <span class="filters__label">
                     Бренд: 
                 </span>
-                <select v-model="filters.brand" placeholder="Не выбрано"
+                <select v-model="ProductsStore.filters.brand" placeholder="Не выбрано"
                     name="brand" id="brand" class="filters__select">
                     <option value="" selected placeholder="Не выбрано">Не выбрано</option>
                     <option v-for="brand,i in brandsList" :key="i"
@@ -66,7 +85,7 @@ const ProductsStore = useProductsStore();
                    Цена 
                 </span>
                 <input 
-                v-model="filters.minPrice" 
+                v-model="ProductsStore.filters.minPrice" 
                 type="number" 
                 class="filters__input" 
                 placeholder="От"
@@ -75,7 +94,7 @@ const ProductsStore = useProductsStore();
                 inputmode="numeric"
                 pattern="[0-9]*">
                 <input 
-                v-model="filters.maxPrice" 
+                v-model="ProductsStore.filters.maxPrice" 
                 type="number" 
                 class="filters__input" 
                 placeholder="До"
@@ -87,6 +106,10 @@ const ProductsStore = useProductsStore();
             <slot name="button">
 
             </slot>
+            <button @click="acceptFilters"
+            class="primary-button filter-accept-btn">Применить</button>
+            <button @click="disableFilters"
+            class="filter-disable-btn secondary-btn">Убрать все фильтры</button>
         </div>
         <button 
         @click="ProductsStore.closeFilters"

@@ -16,6 +16,14 @@ onMounted(() => {
     <div class="home-page">
         <HeroVue/>        
         <HomeBrandsVue/>
-        <AboutVue v-if="isClient"/>
+        <AboutVue/>
     </div>
 </template>
+
+<style lang="sass" scoped>
+.home-page
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    flex: 1
+</style>

@@ -2,35 +2,51 @@
 //Wrapper for product items
 import type { Product } from '~/types/product';
 import { useNavStore } from '#imports';
+import { useProductsStore} from '#imports';
 
-const props = defineProps<{products: Product[], grid: number;}>();
-const container = ref<Product[]>([]);
-const currentIndex = ref<number>(0);
+const route = useRoute();
 
-function addNextItem() {
-    container.value.push(props.products[currentIndex.value]);
-    currentIndex.value++;
-}   
+const ProductsStore = useProductsStore();
+const props = defineProps<{ grid: number;}>();
 
-const timeId = setInterval(() => {
-    if(currentIndex.value < props.products.length) {
-        addNextItem();
-    } else {
-        clearInterval(timeId);
-    }
-}, 300);
+
+if(route.params.category) {
+    ProductsStore.filterParam = route.params.category;
+} else if(route.params.season) {
+    ProductsStore.filterParam = route.params.season;
+}
+
+onMounted(() => {
+    ProductsStore.setFilters();
+});
+
+
+onBeforeRouteUpdate(() => {
+    console.log('Updated');
+    ProductsStore.setFilters();
+})
 
 </script>
 
 <template>
     <div class="products-list">
-        <ul
-        class="products-list__inner" :style="{gridTemplateColumns: `repeat(${grid}, 1fr)`}">
-        <TransitionGroup name="products">
-            <ProductsItemVue v-for="item in container" :key="item.id" :product="item" />
-        </TransitionGroup>
-            
+        <template v-if="ProductsStore.currentProducts.length > 0">
+            <ul
+            class="products-list__inner" :style="{gridTemplateColumns: `repeat(${grid}, 1fr)`}">
+            <!-- <TransitionGroup name="products"> -->
+                <ProductsItemVue v-for="item in ProductsStore.currentProducts" :key="item.id" :product="item" />
+            <!-- </TransitionGroup> -->
         </ul>
+        </template>
+        <template v-else>
+            <AlertVue >
+                <template #message>
+                    <span class="alert-message text-[16px] test-rose-500">
+                        Извините, по вашему запросу ничего найдено.
+                    </span>
+                </template>
+            </AlertVue>
+        </template>
     </div>
 </template>
 
